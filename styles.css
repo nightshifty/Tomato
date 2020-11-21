@@ -6,20 +6,21 @@ font: #ffffff
 
 */
 
+h1 {
+  color: #ffffff;
+  background-color: #a4161a;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  width: 100%;
+}
+
 /* Body background and font */
 body {
   background: #c4c4c4;
 }
 
-/* Main heading */
-.heading {
-  color: #bae8e8;
-}
-
 /* Countdown timer */
 .timer {
-  color: #000000;
-  text-align: center;
   width: 20rem;
   height: 20rem;
   background-color: #e5383b;
@@ -28,40 +29,109 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10%;
 }
 
-.row {
+/*source: w3school window curtain*/
+
+.overlay {
+  height: 0%;
   width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #c4c4c4;
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
-/* remove the padding on the play button */
-.btn {
-  padding: 0;
+.overlay-content {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  color: #ffffff;
 }
 
-/* play and reset icons */
-.fa-play,
-.fa-redo-alt {
-  color: #e3f6f5;
-  border: 2px solid transparent;
-  padding: 1rem;
-  border-radius: 2rem;
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
 }
 
-.fa-play:hover,
-.fa-redo-alt:hover {
-  color: #bae8e8;
-  border: 2px solid #bae8e8;
-  transition: 0.3s ease;
+@media screen and (max-height: 450px) {
+  .overlay {
+    overflow-x: auto;
+  }
+
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
 }
 
-/* Dynamic class */
-/* Make the message visible */
-.show_message {
+#openbtn {
+  color: #ffffff;
+  background-color: #a4161a;
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#openLogin {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content {
   display: block;
-  padding: 1rem 0;
-  color: #272343;
-  background: #e3f6f5;
-  border-radius: 0.5rem;
-  transition: 0.5s ease;
+}
+
+/*selbst*/
+
+#addTodo {
+  text-align: center;
+  align-items: right;
+}
+
+.btn {
+  background-color: #a4161a;
+  color: white;
+  font-weight: bold;
+  padding: 2%;
+}
+
+.form-group {
+  font-weight: bold;
+  align-items: right;
+  color: #ffffff;
+}
+
+input {
+  width: 80%;
 }
