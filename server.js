@@ -35,8 +35,11 @@ const db = new sqlite3.Database('database.db');
 //prepared Queries:
 const getAllUsers = "SELECT ID, NAME, PASSWORD FROM USERS;";
 const getOneUserByName = "SELECT ID, NAME, PASSWORD FROM USERS WHERE NAME = $1;";
-const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);"
-
+const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);";
+const insertToToDos = "INSERT INTO TODOS (CONTENT, POMODOROS, USERID, DONE) VALUES ($1, $2, $3, $4);";
+const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
+const deleteOneTOdo = "DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2;";
+const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -157,7 +160,7 @@ app.get('/', function (req, res) {
     }else{
         console.log("ISER IS NOT AUTHENTICATED WHILE REQUESTING"); 
     }
-    res.sendFile(__dirname + '/timer.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 
