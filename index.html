@@ -150,23 +150,30 @@ function closeTodolist() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
 <script id="todolist" type="text/x-handlebars-template">
-    <li class="todo-item">
+  
+  <li class="todo-item">
+      
         <div class="row">
-          <div class="col-sm-2">
+          <div class="col-sm-2 col-xs-6">
             <span>{{pomodoro}}</span> 
             
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 col-xs-6">
             <span>{{text}}</span>
           </div>
           <div class="col-sm-2">
-            <button class=" btn">Delete</button>
+            <button class="btn ">Delete</button>
+           
           </div>
           <div class="col-sm-2">
-            <button class=" btn ">Edit</button>   
-          </div>    
+            <button class=" btn btn-block ">Edit</button> 
+            
+          </div>
+            
         </div>
+        
     </li>
+  
 </script>
 
 <!--validation: source bootstrap.com --> 

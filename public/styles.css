@@ -64,9 +64,11 @@ body {
 
 .overlay .closebtn {
   position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+  top: 5%;
+  right: 10%;
+  font-size: x-large;
+  color: #a4161a;
+  font-weight: bold;
 }
 
 #openbtn {
@@ -113,11 +115,6 @@ body {
   margin: 2%;
 }
 
-.btn :hover {
-  background-color: #e5383b;
-  color: #b1a7a6;
-}
-
 .form-group {
   font-weight: bold;
   align-items: right;
@@ -132,18 +129,26 @@ input {
   text-align: left;
   list-style: none;
   align-items: right;
-  height: 5em;
+  height: fit-content;
+  max-height: 20em;
 }
 
 .todo-item {
   text-align: left;
   list-style: none;
   align-items: right;
-  height: 5em;
+  height: fit-content;
   color: #a4161a;
+  background-color: #b1a7a6;
+  box-shadow: 2px 2px 4px #000000;
+  padding: 2%;
+  margin-bottom: 1%;
+  margin-right: 2%;
 }
 
-.description {
-  font-weight: bold;
-  color: #a4161a;
+@media screen and (max-width: 600px) {
+  .btn {
+    width: 100%;
+    margin: 1%;
+  }
 }
