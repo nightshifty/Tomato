@@ -22,7 +22,11 @@ function getToDolist(){
 }
 
 $( document ).ready(function() {
-    getToDolist();
+	getToDolist();
+	
+	//todolist with scrollview
+	var todolist = $('#todocontainer').height();
+	var addtodo = $('#parentTodo').height();
 });
 
 $(function() {

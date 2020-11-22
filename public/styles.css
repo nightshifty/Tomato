@@ -72,7 +72,6 @@ body {
 #openbtn {
   color: #ffffff;
   background-color: #a4161a;
-  width: 100%;
   font-weight: bold;
   margin-bottom: 0;
   position: absolute;
@@ -85,11 +84,18 @@ body {
   cursor: pointer;
 }
 
-/*selbst*/
+/*selbst */
+#todocontainer {
+  overflow: auto;
+  max-height: 25em;
+  height: 15em;
+}
+
 #parentTodo {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  overflow: auto;
 }
 
 #parentTodo #addTodo {
@@ -97,19 +103,19 @@ body {
   align-items: right;
   background-color: #ffffff;
   padding: 2%;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
 }
 
 .btn {
   background-color: #a4161a;
   color: white;
   font-weight: bold;
-  padding: 2%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  width: 5em;
+  margin: 2%;
+}
+
+.btn :hover {
+  background-color: #e5383b;
+  color: #b1a7a6;
 }
 
 .form-group {
@@ -123,6 +129,21 @@ input {
 }
 
 .list-group {
-  height: 20em;
-  z-index: -100;
+  text-align: left;
+  list-style: none;
+  align-items: right;
+  height: 5em;
+}
+
+.todo-item {
+  text-align: left;
+  list-style: none;
+  align-items: right;
+  height: 5em;
+  color: #a4161a;
+}
+
+.description {
+  font-weight: bold;
+  color: #a4161a;
 }

@@ -19,7 +19,7 @@
   </div>
    
 </div>
-    <!-- Main Timer-->
+    <!-- Main Timer -->
     <div  class="container timer">
         <div id="timer" class="row">
           <div class="col-3">
@@ -37,9 +37,7 @@
         <div class="row">
           <Button id="playbtn" class="btn">START</Button>
         </div>
-      </div>
-      
-
+      </div> 
    
     
 
@@ -47,19 +45,23 @@
     <div id="todos" class="overlay">
       <a href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
       <div class="overlay-content">
-        
+
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
               <h1>Todos</h1>
+              <p>Here you can find your todos and the number of pomodoros</p>
             </div>
           </div>
-            <div class="row">
-              <div class="col-sm-12">
+  
+            <div id="todocontainer" class="row" >
+              <div  class="col-sm-12">
                 <ul class="list-group">
          
                 </ul>
               </div>
+            </div>
+            <div class="row">
           <div id="parentTodo" class="col-sm-12">
 
               <form id="addTodo" class="needs-validation" novalidate>
@@ -80,21 +82,17 @@
                   
                   
                     <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" value="1">
-                    <div class="valid-feedback">
-                      Perfect!
-                    </div>
-                    <div class="invalid-feedback">
-                      Please fill in the numbers of pomodoros!
-                    </div>
+                    
                 </div>
                 
                 <div class="col-sm-3">
                   <button type="submit" class="btn">Add Todo</button>
                 </div>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                  Add a Todo and the number of Pomodoros you will need here. 
+                </small>
               </div>
-              <small id="passwordHelpBlock" class="form-text text-muted">
-                Add a Todo and the number of Pomodoros you will need here. 
-              </small>
+              
             </form>
 
             </div>
@@ -121,7 +119,7 @@
 
     <div class="footer">
       
-          <button id="openbtn" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
+          <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
         
     </div>
 
@@ -148,11 +146,20 @@ function closeTodolist() {
 
 <script id="todolist" type="text/x-handlebars-template">
     <li class="todo-item">
-        <div class="content">
+        <div class="row">
+          <div class="col-sm-2">
+            <span>{{pomodoro}}</span> 
+            
+          </div>
+          <div class="col-sm-6">
             <span>{{text}}</span>
-            <span>{{pomodoro}}</span>    
-            <button class="deletebtn btn">Delete</button>
-            <button class="editbtn btn">Edit</button>      
+          </div>
+          <div class="col-sm-2">
+            <button class=" btn">Delete</button>
+          </div>
+          <div class="col-sm-2">
+            <button class=" btn ">Edit</button>   
+          </div>    
         </div>
     </li>
 </script>
