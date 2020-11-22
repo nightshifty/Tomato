@@ -144,11 +144,16 @@ input {
   padding: 2%;
   margin-bottom: 1%;
   margin-right: 2%;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
   .btn {
     width: 100%;
     margin: 1%;
+  }
+
+  .todo-item {
+    text-align: center;
   }
 }
