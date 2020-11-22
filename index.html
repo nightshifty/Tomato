@@ -33,12 +33,14 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <Button id="playbtn" class="btn">START</Button>
+      <div class="container">
+        <div class="row">
+          <Button id="playbtn" class="btn">START</Button>
+        </div>
       </div>
+      
 
    
-    
     
 
     <!--Container to show todos, add todos, search todos etc. -->
@@ -53,27 +55,50 @@
             </div>
           </div>
             <div class="row">
-              
-          <div class="col-sm-12">
-
-              <form id="addTodo">
-                <div class="form-group">
-                    <h2>Add Todo</h2>
-                    <input type="text" id="todoEntryBox" class="form-control" placeholder="Enter Todo">
-                    <input type="number" id="pomodoroEntryBox" class="form-control" placeholder="Enter Number of pomodoros">
-                    
-               
-               <button type="submit" class="btn">Add Todo
-               </button>
+              <div class="col-sm-12">
+                <ul class="list-group">
+         
+                </ul>
               </div>
+          <div id="parentTodo" class="col-sm-12">
+
+              <form id="addTodo" class="needs-validation" novalidate>
+
+              <div class="form-row align-items-center">
+                <div class="col-sm-6">
+                  <label class="sr-only" for="inputTodo">Todo</label>
+                  <input type="text" class="form-control" id="inputtodo" placeholder="Todo" required>
+                 <div class="valid-feedback">
+        Perfect!
+      </div>
+      <div class="invalid-feedback">
+        Please fill in a Todo!
+      </div>
+                </div>
+                <div class="col-sm-3">
+                  <label class="sr-only" for="inlineFormInput">Pomodoro</label>
+                  
+                  
+                    <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" value="1">
+                    <div class="valid-feedback">
+                      Perfect!
+                    </div>
+                    <div class="invalid-feedback">
+                      Please fill in the numbers of pomodoros!
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                  <button type="submit" class="btn">Add Todo</button>
+                </div>
+              </div>
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                Add a Todo and the number of Pomodoros you will need here. 
+              </small>
             </form>
 
             </div>
-            <div class="col-sm-12">
-              <ul class="list-group">
-       
-              </ul>
-            </div>
+            
             
 
 
@@ -132,7 +157,27 @@ function closeTodolist() {
     </li>
 </script>
 
-
+<!--validation: source bootstrap.com --> 
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+  </script>
 
 
 <script src="index.js"></script>

@@ -10,13 +10,18 @@ h1 {
   color: #ffffff;
   background-color: #a4161a;
   margin-bottom: 10%;
-  margin-top: 5%;
   width: 100%;
+  text-align: center;
 }
 
+#header {
+  position: fixed;
+  top: 0;
+}
 /* Body background and font */
 body {
   background: #c4c4c4;
+  overflow: hidden; /* Hide scrollbars */
 }
 
 /* Countdown timer */
@@ -64,18 +69,6 @@ body {
   font-size: 60px;
 }
 
-@media screen and (max-height: 450px) {
-  .overlay {
-    overflow-x: auto;
-  }
-
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-
 #openbtn {
   color: #ffffff;
   background-color: #a4161a;
@@ -92,31 +85,22 @@ body {
   cursor: pointer;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
-  z-index: 1;
-  right: 0;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 /*selbst*/
+#parentTodo {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
 
-#addTodo {
+#parentTodo #addTodo {
   text-align: center;
   align-items: right;
+  background-color: #ffffff;
+  padding: 2%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .btn {
@@ -124,6 +108,8 @@ body {
   color: white;
   font-weight: bold;
   padding: 2%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .form-group {
@@ -134,4 +120,9 @@ body {
 
 input {
   width: 80%;
+}
+
+.list-group {
+  height: 20em;
+  z-index: -100;
 }
