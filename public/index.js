@@ -32,6 +32,26 @@ $( document ).ready(function() {
 $(function() {
 	//Add TodoList
 	$addTodo.on("submit", function(event) {
+
+		//validation from bootstrap
+		'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+
+//add to list 
+
 		event.preventDefault();
 		
 		let newPomo = $("#inputtodo").val();
@@ -42,13 +62,18 @@ $(function() {
             pomodoro: newPomo
 		});
 
-		$TodoItem.append(listItem);
-		$.post("/addTodoItem",
-			{
-                text: newTodo,
-                pomodoro: newPomo
-			});
-			$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
+		
+
+			$TodoItem.append(listItem);
+			$.post("/addTodoItem",
+				{
+					text: newTodo,
+					pomodoro: newPomo
+				});
+				$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
+		
+
+		
 
 			
 
