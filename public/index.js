@@ -30,10 +30,8 @@ $(function() {
 	$addTodo.on("submit", function(event) {
 		event.preventDefault();
 		
-		let newPomo = $("#pomodoroEntryBox").val();
-		let newTodo = $("#todoEntryBox").val();
-
-		$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
+		let newPomo = $("#inputtodo").val();
+		let newTodo = $("#inlineFormInputGroup").val();
 
 		var listItem = template({
             text: newTodo,
@@ -46,16 +44,10 @@ $(function() {
                 text: newTodo,
                 pomodoro: newPomo
 			});
+			$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
 
-		/*$.ajax({
-			url: URL,
-			method: "POST",
-			data: {
-                text: newTodo,
-                pomodoro: newPomo,
-			}
-		});
-		*/
+			
+
     });
     
     //Delete TodoList
