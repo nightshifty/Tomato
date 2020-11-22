@@ -152,7 +152,7 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-//handle TODO Requests:
+//handle TODO add Entry Requests:
 app.post('/addTodoItem', function (req, res, next) {
     console.log("Trying to post todo item");
     if(req.isAuthenticated()){
@@ -165,6 +165,23 @@ app.post('/addTodoItem', function (req, res, next) {
         prsmInsertToDoEntry.finalize;
     }
 });
+
+//create JSON with TODOS
+app.get('/getTodoEntrys', function(req, res, next){
+    console.log("Asked for ToDo list JSON");
+    if(req.isAuthenticated()){
+        console.log("generating JSON now...");
+        const prsmGetTodos = db.prepare(getAllToDosOfOneUser);
+        prsmGetTodos.all(user.id, function(error, rows) {
+            if(error) {
+                console.log(error);
+                res.status(400).json(error);
+            }else{
+                res.status(200).json(rows);
+            }
+        });
+    }
+})
 
 //print user table to make testing easier :)
 db.all(getAllUsers, (err, rows) => {
