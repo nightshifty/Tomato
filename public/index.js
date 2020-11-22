@@ -15,8 +15,10 @@ $(function() {
 	$addTodo.on("submit", function(event) {
 		event.preventDefault();
 
-        //how to add pomodoro here???
-		var newTodo = $addTodo.find("input").val();
+		//how to add pomodoro here???
+		let newPomo = $("#pomodoroEntryBox").val();
+		let newTodo = $("#todoEntryBox").val();
+		//var newTodo = $addTodo.find("input").val(); 
 
 		$addTodo.find("input").val("");
 
@@ -26,8 +28,13 @@ $(function() {
 		});
 
 		$TodoItem.append(listItem);
+		$.post("/addTodoItem",
+			{
+                text: newTodo,
+                pomodoro: newPomo
+			});
 
-		$.ajax({
+		/*$.ajax({
 			url: URL,
 			method: "POST",
 			data: {
@@ -35,6 +42,7 @@ $(function() {
                 pomodoro: newPomo,
 			}
 		});
+		*/
     });
     
     //Delete TodoList

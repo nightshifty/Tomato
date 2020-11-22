@@ -54,7 +54,7 @@ passport.use(new LocalStrategy(
                 if(res == true){
                     //password matches
                     console.log("password comparison successful");
-                    const user = {id: row.ID}
+                    user = {id: row.ID}
                     return done(null, user);
                 }
                 else{
@@ -142,17 +142,6 @@ userExistQuery.get(username, function(error, row) {
 });
 });
 
-db.all(getAllUsers, (err, rows) => {
-    if (err) {
-        return console.error(err.message);
-    } else {
-        console.log("User table for testing purpose: (ID|NAME|PASSWORD):")
-        rows.forEach((row) => {
-            console.log(row.ID+" | "+row.NAME+" |"+row.PASSWORD);
-          });
-    }
-});
-
 // GET method route
 app.get('/', function (req, res) {
     if(req.isAuthenticated()){
@@ -163,5 +152,30 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+//handle TODO Requests:
+app.post('/addTodoItem', function (req, res, next) {
+    console.log("Trying to post todo item");
+    if(req.isAuthenticated()){
+        console.log("posting is authenticated");
+        const todoContent = req.body.text;
+        const pomodoroAmount = req.body.pomodoro;
+        const prsmInsertToDoEntry = db.prepare(insertToToDos);
+        //values: CONTENT, POMODOROS, USERID, DONE(0 means no)
+        prsmInsertToDoEntry.run(todoContent, pomodoroAmount, user.id, 0);
+        prsmInsertToDoEntry.finalize;
+    }
+});
+
+//print user table to make testing easier :)
+db.all(getAllUsers, (err, rows) => {
+    if (err) {
+        return console.error(err.message);
+    } else {
+        console.log("User table for testing purpose: (ID|NAME|PASSWORD):")
+        rows.forEach((row) => {
+            console.log(row.ID+" | "+row.NAME+" |"+row.PASSWORD);
+          });
+    }
+});
 
 db.close;
