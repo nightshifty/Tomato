@@ -12,7 +12,7 @@
 
         <div id="logincard" class='container card '>
             <h2>Register</h2>
-            <form id='registerForm' method="POST" action="/register" class="needs-validation" name="registration" >
+            <form id='registerForm' method="POST" action="/register" class="needs-validation" name="registration">
                 <div class="form-row align-items-center">
                 <div class="col-sm-12">
                     <label class="sr-only" for="inputUsername">Username</label>
@@ -29,21 +29,20 @@
                 </div>
                 <div class="form-row align-items-center">
                     <div class="col-sm-12">
-                      <label class="sr-only" for="inputConfirmPassword">Confirm Password</label>
-                      <input type="password" class="form-control" id="confpassword" placeholder="Confirm Password" required>
+                      
                       <div id="message">
-                        <small id="letter" class="invalid text-muted">
+                        <small id="letter" class="invalid">
                             Must contain lowercase letter.
-                          </small>
-                          <small id="capital" class="invalid text-muted">
+                          </small></br>
+                          <small id="capital" class="invalid">
                             Must contain capital letter.
-                          </small>
-                          <small id="number" class="invalid text-muted">
+                          </small></br>
+                          <small id="number" class="invalid">
                             Must include a number.
-                          </small>
-                          <small id="length" class="invalid text-muted">
+                          </small></br>
+                          <small id="length" class="invalid">
                             Must be min characters long.
-                          </small>
+                          </small></br>
                         </div>
                         
                      
@@ -67,8 +66,9 @@
 
         <!--VALIDATION OF INPUTS: source w3schools-->
         <script>
-            let password = document.getElementById("password");
-            let confpassword = document.getElementById("confpassword")
+        
+        let password = document.getElementById("password");
+            
             let letter = document.getElementById("letter");
             let capital = document.getElementById("capital");
             let number = document.getElementById("number");
@@ -123,9 +123,18 @@ password.onkeyup = function() {
     length.classList.remove("valid");
     length.classList.add("invalid");
   }
+
+ 
 }
 
-        </script>
+
+
+
+
+
+</script>
+        
+        
         
 </body>
 
