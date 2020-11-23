@@ -14,11 +14,22 @@
 </head>
 <body>
 
-<div  class="text-center">
-      <h1>TomatoTimer <a href="login">&#9776;</a></h1>
-  </div>
+<div class="text-center">
+      <h1>TomatoTimer</h1>
+        </div>
+        
+        <div class="container dropdown">
+          <button class="btn dropbtn">&#9776;</button>
+          <div class="dropdown-content">
+            <a href="http://localhost:3001/Register">Register</a>
+            <a href="http://localhost:3001/Login">Login</a>
+            
+          </div>
+        </div>
+
+  
    
-</div>
+        <div id="pomodorocontent">
     <!-- Main Timer -->
     <div  class="container timer">
         <div id="timer" class="row">
@@ -35,7 +46,11 @@
       </div>
       <div class="container">
         <div class="row">
+          <div class="col-sm-12 text-center">
           <Button id="playbtn" class="btn">START</Button>
+          <Button id="pausebtn" class="btn">PAUSE</Button>
+        </div>
+
         </div>
       </div> 
    
@@ -120,8 +135,8 @@
 
 
       </div>
+    
     </div>
-
     <div class="footer">
       
           <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
