@@ -1,5 +1,8 @@
 //This document contains all scripts for the todo list
 
+
+
+
 /**source: https://github.com/shoaibcode/Learnig-JQuery-with-AJAX/tree/Lesson-01-Adding-TodoList */
 let $addTodo = $("#addTodo"); //form for adding
 let $TodoItem = $(".list-group"); //<ul> cointaining ToDo list
@@ -43,38 +46,12 @@ $( document ).ready(function() {
 		}
 	console.log(jqXHR.status);
 	
-//validation of forms
-// Initialize form validation on the registration form.
-	// It has the name attribute "registration"
-	$("form[name='registration']").validate({
-		// Specify validation rules
-		rules: {
-		
-		  username: "required",
-		  password: {
-			required: true,
-			minlength: 5
-		  }
-		},
-		// Specify validation error messages
-		messages: {
-		  username: "Please enter your firstname",
-		  password: {
-			required: "Please provide a password",
-			minlength: "Your password must be at least 5 characters long"
-		  },
-		},
-		// Make sure the form is submitted to the destination defined
-		// in the "action" attribute of the form when valid
-		submitHandler: function(form) {
-		  form.submit();
-		}
-	  });
+
 
 
 });
 
-//validation of forms 
+ 
 
 
 
@@ -140,3 +117,27 @@ $(function() {
 		});
 	});
 });
+
+//validation
+
+
+function validateLogin(){
+
+	let username = document.forms["LoginForm"]['username'];
+	let password = document.forms["LoginForm"]["password"];
+
+	if (username.value == "") { 
+		window.alert("Please enter your username."); 
+		username.focus(); 
+		return false; 
+	} 
+
+	if (password.value == "") { 
+		window.alert("Please enter your password"); 
+		password.focus(); 
+		return false; 
+	} 
+
+}
+
+
