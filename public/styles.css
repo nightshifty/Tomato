@@ -18,6 +18,7 @@ h1 {
 body {
   background: #c4c4c4;
   overflow: hidden;
+  align-items: center;
 }
 
 /* Countdown timer */
@@ -199,6 +200,20 @@ input {
   overflow: auto;
   max-height: 30em;
   height: 25em;
+}
+
+.card {
+  margin: auto;
+  text-align: left;
+  height: fit-content;
+  width: 40%;
+  color: #a4161a;
+  background-color: #b1a7a6;
+  box-shadow: 2px 2px 4px #000000;
+  padding: 2%;
+  margin: auto;
+  margin-top: 10%;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {
