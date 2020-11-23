@@ -38,7 +38,8 @@ $( document ).ready(function() {
 		if(jqXHR.status === 403){
 			//user is not authorized
 			console.log("user is not authorized");
-			$("#todos").hide();
+			//$("#todos").hide();
+			document.getElementById("todos").style.display = "none";
 		}else{
 			//user is authorized @ Larissa: Call your function with Ajax Magic from here
 			console.log("user is authorized");
@@ -118,26 +119,6 @@ $(function() {
 	});
 });
 
-//validation
 
-
-function validateLogin(){
-
-	let username = document.forms["LoginForm"]['username'];
-	let password = document.forms["LoginForm"]["password"];
-
-	if (username.value == "") { 
-		window.alert("Please enter your username."); 
-		username.focus(); 
-		return false; 
-	} 
-
-	if (password.value == "") { 
-		window.alert("Please enter your password"); 
-		password.focus(); 
-		return false; 
-	} 
-
-}
 
 

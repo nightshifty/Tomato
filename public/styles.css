@@ -121,6 +121,7 @@ body {
 
 input {
   width: 80%;
+  margin: 3%;
 }
 
 .list-group {
@@ -216,6 +217,11 @@ input {
   font-weight: bold;
 }
 
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
 @media screen and (max-width: 600px) {
   .btn {
     width: 100%;
@@ -225,4 +231,29 @@ input {
   .todo-item {
     text-align: center;
   }
+}
+
+#message small {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
 }
