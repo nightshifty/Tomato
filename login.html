@@ -12,29 +12,19 @@
 
         <div id="logincard" class='container card '>
             <h2>Login to see Todos</h2>
-            <form id='mainForm' method="POST" action="/login" class="needs-validation" novalidate>
-                <div class="form-row align-items-center">
+            <form id='mainForm' method="POST" action="/login" class="needs-validation" >
+                <div class="form-group form-row align-items-center">
                 <div class="col-sm-12">
                     <label class="sr-only" for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Username" required>
-                   <div class="valid-feedback">
-          Perfect!
-        </div>
-        <div class="invalid-feedback">
-          Please fill in your Username!
-        </div>
+                    <input type="text" class="form-control" id="username" placeholder="Username" >
+                   
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-12">
                     <label class="sr-only" for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="pasword" placeholder="Password" required>
-                   <div class="valid-feedback">
-          Perfect!
-        </div>
-        <div class="invalid-feedback">
-          Please fill in your Password!
-        </div>
+                    <input type="password" class="form-control" id="pasword" placeholder="Password" >
+                   
     
                   </div>
                   <div class="form-row align-items-center">
@@ -52,6 +42,7 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 </body>
 
 </html>

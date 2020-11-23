@@ -12,29 +12,19 @@
 
         <div id="logincard" class='container card '>
             <h2>Login to see Todos</h2>
-            <form id='mainForm' method="POST" action="/register" class="needs-validation" novalidate>
+            <form id='mainForm' method="POST" action="/register" class="needs-validation" name="registration" >
                 <div class="form-row align-items-center">
                 <div class="col-sm-12">
                     <label class="sr-only" for="inputUsername">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username" required>
-                   <div class="valid-feedback">
-          Perfect!
-        </div>
-        <div class="invalid-feedback">
-          Please fill in your Username!
-        </div>
+                  
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-12">
                     <label class="sr-only" for="inputPassword">Password</label>
                     <input type="password" class="form-control" id="pasword" placeholder="Password" required>
-                   <div class="valid-feedback">
-          Perfect!
-        </div>
-        <div class="invalid-feedback">
-          Please fill in your Password!
-        </div>
+                   
     
                   </div>
                 </div>
@@ -42,13 +32,7 @@
                     <div class="col-sm-12">
                       <label class="sr-only" for="inputConfirmPassword">Confirm Password</label>
                       <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" required>
-                     <div class="valid-feedback">
-            Perfect!
-          </div>
-          <div class="invalid-feedback">
-            Please fill in your Password!
-          </div>
-      
+                     
                     </div>
                   </div>
                   <div class="form-row align-items-center">
@@ -66,6 +50,7 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
 </body>
 
 </html>
