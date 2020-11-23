@@ -28,6 +28,19 @@ $( document ).ready(function() {
 	$('#todocontainer').height();
 	 $('#parentTodo').height();
 	 $("#pomodorcontent").height();
+
+	 //find out if user is authenticated:
+	 $.ajax( "/auth" )
+	.always(function (jqXHR) {
+		if(jqXHR.status === 403){
+			//user is not authorized
+			console.log("user is not authorized");
+		}else{
+			//user is authorized @ Larissa: Call your function with Ajax Magic from here
+			console.log("user is authorized");
+		}
+    console.log(jqXHR.status);
+});
 });
 
 $(function() {

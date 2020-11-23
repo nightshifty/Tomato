@@ -183,6 +183,17 @@ app.get('/getTodoEntrys', function(req, res, next){
     }
 })
 
+//find out if user is authenticated
+app.get('/auth', function (req, res) {
+    console.log("Responding auth /auth request");
+    if(req.isAuthenticated()){
+       res.status(200).send('authenticated');
+    }else{
+        res.status(403).send('unauthorized');
+    }
+});
+
+
 //print user table to make testing easier :)
 db.all(getAllUsers, (err, rows) => {
     if (err) {
@@ -194,5 +205,6 @@ db.all(getAllUsers, (err, rows) => {
           });
     }
 });
+
 
 db.close;
