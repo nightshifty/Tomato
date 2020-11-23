@@ -29,7 +29,8 @@
                 </div>
                 <div class="form-row align-items-center">
                     <div class="col-sm-12">
-                      
+                      <label class="sr-only" for="inputConfirmPassword">Confirm Password</label>
+                      <input type="password" class="form-control" id="confpassword" placeholder="Confirm Password" required>
                       <div id="message">
                         <small id="letter" class="invalid">
                             Must contain lowercase letter.
@@ -67,8 +68,8 @@
         <!--VALIDATION OF INPUTS: source w3schools-->
         <script>
         
-        let password = document.getElementById("password");
-            
+            let password = document.getElementById("password");
+            let confpassword = document.getElementById("confpassword")
             let letter = document.getElementById("letter");
             let capital = document.getElementById("capital");
             let number = document.getElementById("number");
@@ -82,6 +83,15 @@
             }
             
   document.getElementById("message").style.display = "none";
+
+  /*let checkpassword = password.value;
+        let checkconfPassword = confpassword.value;
+        if (checkpassword != checkconfPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true; */
+    
 
 
 password.onkeyup = function() {

@@ -146,8 +146,11 @@ userExistQuery.get(username, function(error, row) {
 app.get('/', function (req, res) {
     if(req.isAuthenticated()){
         console.log("USER IS AUTHENTICATED WHILE REQUESTING");
+       
     }else{
         console.log("ISER IS NOT AUTHENTICATED WHILE REQUESTING"); 
+
+
     }
     res.sendFile(__dirname + '/index.html');
 });

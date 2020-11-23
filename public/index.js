@@ -38,8 +38,8 @@ $( document ).ready(function() {
 		if(jqXHR.status === 403){
 			//user is not authorized
 			console.log("user is not authorized");
-			//$("#todos").hide();
-			document.getElementById("todos").style.display = "none";
+			$("#todobtn").hide();
+			//document.getElementById("todos").style.display = "none";
 		}else{
 			//user is authorized @ Larissa: Call your function with Ajax Magic from here
 			console.log("user is authorized");
