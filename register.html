@@ -42,7 +42,10 @@
                             Must include a number.
                           </small></br>
                           <small id="length" class="invalid">
-                            Must be min characters long.
+                            Must be min 6 characters long.
+                          </small></br>
+                          <small id="confirm" class="invalid">
+                            Passwords do not match.
                           </small></br>
                         </div>
                         
@@ -74,6 +77,7 @@
             let capital = document.getElementById("capital");
             let number = document.getElementById("number");
             let length = document.getElementById("length");
+            let confirm = 
 
             document.getElementById("message").style.display = "none";
             
@@ -82,17 +86,7 @@
             document.getElementById("message").style.display = "block";
             }
             
-  document.getElementById("message").style.display = "none";
-
-  /*let checkpassword = password.value;
-        let checkconfPassword = confpassword.value;
-        if (checkpassword != checkconfPassword) {
-            alert("Passwords do not match.");
-            return false;
-        }
-        return true; */
-    
-
+            document.getElementById("message").style.display = "none";
 
 password.onkeyup = function() {
   // Validate lowercase letters
@@ -126,7 +120,7 @@ password.onkeyup = function() {
   }
 
   // Validate length
-  if(password.value.length >= 8) {
+  if(password.value.length >= 6) {
     length.classList.remove("invalid");
     length.classList.add("valid");
   } else {
@@ -134,10 +128,19 @@ password.onkeyup = function() {
     length.classList.add("invalid");
   }
 
+  
+
  
 }
 
+//validate confirm 
+$('#password, #confpassword').on('keyup', function () {
+  if ($('#password').val() == $('#confpassword').val()) {
+    $('#confirm').html('Password matching').css('color', 'green');
 
+  } else 
+    $('#confirm').html('Password not Matching').css('color', 'red');
+});
 
 
 
