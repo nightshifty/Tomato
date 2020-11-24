@@ -115,6 +115,12 @@ app.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
+//logout functionality
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
 //handle register
 app.post('/register', function(req, res, next){
 const username = req.body.username;
@@ -141,6 +147,21 @@ userExistQuery.get(username, function(error, row) {
     }
 });
 });
+
+//Delete one todoItem
+// POST method route
+app.post('/deleteOneEntry', function(req, res){
+    if(req.isAuthenticated()){
+        //DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2:
+        console.log("Trying to delete todoitem "+req.body.todoid+" from user "+user.id)
+        const prsmDelete = db.prepare(deleteOneTOdo);
+        prsmDelete.run(req.body.todoid, user.id);
+        prsmDelete.finalize();
+        res.status(200);
+    }else{
+        res.status(400).json(error);
+    }
+})
 
 // GET method route
 app.get('/', function (req, res) {
