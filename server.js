@@ -115,6 +115,12 @@ app.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
+//logout functionality
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
 //handle register
 app.post('/register', function(req, res, next){
 const username = req.body.username;
