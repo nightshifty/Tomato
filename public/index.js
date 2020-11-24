@@ -17,11 +17,27 @@ function getToDolist(){
 		$.each (data, function(key, val){
 			let newListItem = template({
 				text: val.CONTENT,
-				pomodoro: val.POMODOROS
-			})//TODO: Also catch val.TODOID
+				pomodoro: val.POMODOROS,
+				todoid: val.TODOID
+			})
 			$TodoItem.append(newListItem);
 		})
 	})
+}
+
+function refreshToDolist(){
+	let newList = $("<ul class='list-group'></ul>");
+	$.getJSON("/getTodoEntrys", function(data){
+		$.each (data, function(key, val){
+			let newListItem = template({
+				text: val.CONTENT,
+				pomodoro: val.POMODOROS,
+				todoid: val.TODOID
+			})
+			newList.append(newListItem);
+		})
+	})
+	$TodoItem.html(newList);//replace complete list with new one
 }
 
 $( document ).ready(function() {
@@ -52,73 +68,39 @@ $( document ).ready(function() {
 
 });
 
- 
-
-
-
-
-
 });
 
 $(function() {
 	//Add TodoList
 	$addTodo.on("submit", function(event) {
-
-
-
-//add to list 
-
 		event.preventDefault();
-		
 		let newPomo = $("#inputtodo").val();
 		let newTodo = $("#inlineFormInputGroup").val();
-
 		var listItem = template({
             text: newTodo,
             pomodoro: newPomo
 		});
-
-		
-
-			$TodoItem.append(listItem);
-			$.post("/addTodoItem",
-				{
-					text: newTodo,
-					pomodoro: newPomo
-				});
-				$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
-		
-
-		
-
-			
-
+		$TodoItem.append(listItem);
+		$.post("/addTodoItem",
+			{
+				text: newTodo,
+				pomodoro: newPomo
+			});
+			$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
+		refreshToDolist();
     });
     
-    //Delete TodoList
-	$delTodo.on("deletebtn", function(event) {
-		event.preventDefault();
-
-		var delTodo = $delTodo.find("input").val();
-
-		$delTodo.find("input").val("");
-
-		var listItem = template({
-			text: delTodo
-		});
-
-		$TodoItem.delete(listItem);
-
-		$.ajax({
-			url: URL,
-			method: "DELETE",
-			data: {
-				text: delTodo
-			}
-		});
-	});
+	//Delete TodoList on click
 });
 
-
-
+function deleteButtonfunction(btn){
+	let dbtn = $(btn);
+	let todoID = dbtn.parent().parent().data("todoid");
+	console.log("deleting item "+todoID);
+	$.post("/deleteOneEntry",
+	{
+		todoid: todoID
+	});
+	dbtn.parent().parent().parent().remove();
+}
 
