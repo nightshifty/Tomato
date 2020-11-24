@@ -157,9 +157,10 @@ app.post('/deleteOneEntry', function(req, res){
         const prsmDelete = db.prepare(deleteOneTOdo);
         prsmDelete.run(req.body.todoid, user.id);
         prsmDelete.finalize();
-        res.status(200);
+        console.log("deleted");
+        res.status(200).send('OK');
     }else{
-        res.status(400).json(error);
+        res.status(400).send(error);
     }
 })
 
@@ -187,6 +188,8 @@ app.post('/addTodoItem', function (req, res, next) {
         //values: CONTENT, POMODOROS, USERID, DONE(0 means no)
         prsmInsertToDoEntry.run(todoContent, pomodoroAmount, user.id, 0);
         prsmInsertToDoEntry.finalize;
+        console.log("entry should be added");
+        res.status(200).send('OK');
     }
 });
 
@@ -201,6 +204,7 @@ app.get('/getTodoEntrys', function(req, res, next){
                 console.log(error);
                 res.status(400).json(error);
             }else{
+                console.log("JSON sent");
                 res.status(200).json(rows);
             }
         });
@@ -211,7 +215,7 @@ app.get('/getTodoEntrys', function(req, res, next){
 app.get('/auth', function (req, res) {
     console.log("Responding auth /auth request");
     if(req.isAuthenticated()){
-       res.status(200).send('authenticated');
+       res.status(201).send('authenticated');
     }else{
         res.status(403).send('unauthorized');
     }

@@ -9,7 +9,7 @@ let $TodoItem = $(".list-group"); //<ul> cointaining ToDo list
 
 //Template
 let source = $("#todolist").html(); //handlebars script
-let template = Handlebars.compile(source); 
+let template = Handlebars.compile(source);
 
 //This function loads the saved ToDoList if logged in
 function getToDolist(){
@@ -27,17 +27,40 @@ function getToDolist(){
 
 function refreshToDolist(){
 	let newList = $("<ul class='list-group'></ul>");
-	$.getJSON("/getTodoEntrys", function(data){
+	console.log("request list");
+	/*$.getJSON("/getTodoEntrys", function(data){
+		console.log("received JSON");
 		$.each (data, function(key, val){
 			let newListItem = template({
 				text: val.CONTENT,
 				pomodoro: val.POMODOROS,
 				todoid: val.TODOID
 			})
+			console.log("adding to newlist: "+val.CONTENT+" "+val.TODOID);
 			newList.append(newListItem);
 		})
-	})
-	$TodoItem.html(newList);//replace complete list with new one
+	})*/
+	$.getJSON("/getTodoEntrys")
+  	.done(function( data ) {
+	console.log("received JSON");
+	$.each (data, function(key, val){
+		let newListItem = template({
+			text: val.CONTENT,
+			pomodoro: val.POMODOROS,
+			todoid: val.TODOID
+		})
+		console.log("adding to newlist: "+val.CONTENT+" "+val.TODOID);
+		newList.append(newListItem);
+  })
+})
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
+	//replace complete list with new one:
+	let todoListParentDiv = $("#todoListParent");
+	todoListParentDiv.empty();
+	todoListParentDiv.append(newList);
 }
 
 $( document ).ready(function() {
@@ -45,11 +68,11 @@ $( document ).ready(function() {
 	
 	//todolist with scrollview
 	$('#todocontainer').height();
-	 $('#parentTodo').height();
-	 $("#pomodorcontent").height();
+	$('#parentTodo').height();
+	$("#pomodorcontent").height();
 
-	 //find out if user is authenticated:
-	 $.ajax( "/auth" )
+	//find out if user is authenticated:
+	$.ajax( "/auth" )
 	.always(function (jqXHR) {
 		if(jqXHR.status === 403){
 			//user is not authorized
@@ -60,12 +83,9 @@ $( document ).ready(function() {
 			//user is authorized @ Larissa: Call your function with Ajax Magic from here
 			console.log("user is authorized");
 			$("#todos").show();
+			console.log("200");
 		}
-	console.log(jqXHR.status);
-	
-
-
-
+	console.log(jqXHR.status); //TODO is undefined if not 403 – WHY?
 });
 
 });
@@ -76,23 +96,22 @@ $(function() {
 		event.preventDefault();
 		let newPomo = $("#inputtodo").val();
 		let newTodo = $("#inlineFormInputGroup").val();
-		var listItem = template({
+		/*var listItem = template({
             text: newTodo,
             pomodoro: newPomo
-		});
-		$TodoItem.append(listItem);
+		});*/
+		//$(".list-group").append(listItem);
 		$.post("/addTodoItem",
 			{
 				text: newTodo,
 				pomodoro: newPomo
 			});
-			$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
-		refreshToDolist();
+			//$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
+		setTimeout(() => { refreshToDolist(); }, 100);//gives the server some time
     });
-    
-	//Delete TodoList on click
 });
 
+//Delete one Entry in ToDoList on click
 function deleteButtonfunction(btn){
 	let dbtn = $(btn);
 	let todoID = dbtn.parent().parent().data("todoid");
