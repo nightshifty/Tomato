@@ -108,6 +108,10 @@ $(function() {
 			});
 			//$addTodo.find("input").val("");//delete input-field to prevent multiple inputs
 		setTimeout(() => { refreshToDolist(); }, 100);//gives the server some time
+
+		//clear inputs 
+		newPomo = $("#inputtodo").val(" ");
+		newTodo = $("#inlineFormInputGroup").val(" ")
     });
 });
 
