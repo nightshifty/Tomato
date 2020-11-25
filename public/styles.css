@@ -1,22 +1,25 @@
 /* primary color: #A4161A darkred
 secondary color: #E5383B red
-background: #C4C4C4 grey
+background: #F4EAD5 grey
 other grey: #B1A7A6
 font: #ffffff
 
-*/
+New Color Palette */
+.colors {
+  background: #E94E77 #D68189 #C6E5D9 #F4EAD5;
+}
 
 h1 {
   color: #ffffff;
-  background-color: #a4161a;
+  background-color: #D68189;
   margin-bottom: 5%;
   width: 100%;
   text-align: center;
 }
 
-/* Body background and font */
+/* Body */
 body {
-  background: #c4c4c4;
+  background: #fff;
   overflow: hidden;
   align-items: center;
 }
@@ -46,7 +49,7 @@ body {
   z-index: 1;
   bottom: 0;
   left: 0;
-  background-color: #c4c4c4;
+  background-color: #F4EAD5;
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -65,13 +68,13 @@ body {
   top: 5%;
   right: 10%;
   font-size: x-large;
-  color: #a4161a;
+  color: #D68189;
   font-weight: bold;
 }
 
 #openbtn {
   color: #ffffff;
-  background-color: #a4161a;
+  background-color: #D68189;
   font-weight: bold;
   margin-bottom: 0;
   position: absolute;
@@ -106,7 +109,7 @@ body {
 }
 
 .btn {
-  background-color: #a4161a;
+  background-color: #D68189;
   color: white;
   font-weight: bold;
   width: 5em;
@@ -137,7 +140,7 @@ input {
   list-style: none;
   align-items: right;
   height: fit-content;
-  color: #a4161a;
+  color: #D68189;
   background-color: #b1a7a6;
   box-shadow: 2px 2px 4px #000000;
   padding: 2%;
@@ -149,7 +152,7 @@ input {
 /*dropdown menu w3schools*/
 /* Dropdown Button */
 .dropbtn {
-  background-color: #a4161a;
+  background-color: #D68189;
   color: white;
   font-size: large;
   border: none;
@@ -208,7 +211,7 @@ input {
   text-align: left;
   height: fit-content;
   width: 40%;
-  color: #a4161a;
+  color: #D68189;
   background-color: #b1a7a6;
   box-shadow: 2px 2px 4px #000000;
   padding: 2%;

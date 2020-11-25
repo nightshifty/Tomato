@@ -9,7 +9,9 @@ const
     session = require('express-session'),
     bcrypt = require('bcrypt'),
     LocalStrategy = require('passport-local').Strategy,
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    {body, validationResult} = require('express-validator');
+
 //    auth = require('./auth'),
 //    cookieParser = require('cookie-parser'),
 //    cookieSession = require('cookie-session'),
@@ -115,14 +117,25 @@ app.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
-//logout functionality
-app.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
-  });
-
-//handle register
-app.post('/register', function(req, res, next){
+//handle register including validation
+app.post('/register', [
+    //username must be at least 3 chars long
+    body('username').isLength({ min: 3 }).trim().escape()
+    ,/*.bail().custom(val => {
+        return !(checkUserExists(val))
+    }),*/
+    //min 8 chars length, TODO contain min 1 char and 1 letter
+    body('password').isLength({ min: 8 }).withMessage('password needs min 8 characters')
+    .matches('[0-9]').withMessage('password must contain a number')
+    .matches('[A-Z,a-z]').withMessage('password must contain a letter').trim().escape()
+    //TODO: check not in use
+], function(req, res){// Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+      console.log("did not match");
+    return res.status(400).json({ errors: errors.array() });
+  }
+//at this point username & password are validated
 const username = req.body.username;
 const plainpw = req.body.password;
 console.log("Trying to insert to db: "+username);
@@ -148,6 +161,29 @@ userExistQuery.get(username, function(error, row) {
 });
 });
 
+/*function checkUserExists(username){
+    console.log("checking if username exitst: "+username);
+    const userExistQuery = db.prepare(getOneUserByName);
+    userExistQuery.get(username, function(error, row) {
+        if(error) {
+            console.log("there is an error while checking");
+            return false;
+        }
+        if(!row){ //username still free
+            console.log("existing already");
+            return false;
+        }
+        console.log("name still free");
+        return true;
+        })
+}*/
+
+//logout functionality
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
 //Delete one todoItem
 // POST method route
 app.post('/deleteOneEntry', function(req, res){
@@ -168,17 +204,31 @@ app.post('/deleteOneEntry', function(req, res){
 app.get('/', function (req, res) {
     if(req.isAuthenticated()){
         console.log("USER IS AUTHENTICATED WHILE REQUESTING");
-       
     }else{
         console.log("ISER IS NOT AUTHENTICATED WHILE REQUESTING"); 
-
-
     }
     res.sendFile(__dirname + '/index.html');
 });
 
 //handle TODO add Entry Requests:
-app.post('/addTodoItem', function (req, res, next) {
+app.post('/addTodoItem', [
+    
+    // Check Todo text
+    body('text').notEmpty().withMessage('Text can not be empty'),
+    
+    // check pomodoronumber
+    body('pomodoro').trim()
+    .optional({ checkFalsy: true })
+    .isNumeric().withMessage('Only Decimals allowed')
+   
+], 
+   function (req, res) {
+    const errors = validationResult(req);
+    console.log("usern tries to insert pomodoro: "+req.body.pomodoro);
+    if (!errors.isEmpty()) {
+        console.log("forbidden to add to todo because not validated.");
+      return res.status(400).json({ errors: errors.array() });
+    }
     console.log("Trying to post todo item");
     if(req.isAuthenticated()){
         console.log("posting is authenticated");
@@ -233,6 +283,5 @@ db.all(getAllUsers, (err, rows) => {
           });
     }
 });
-
 
 db.close;

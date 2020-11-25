@@ -94,8 +94,8 @@ $(function() {
 	//Add TodoList
 	$addTodo.on("submit", function(event) {
 		event.preventDefault();
-		let newPomo = $("#inputtodo").val();
-		let newTodo = $("#inlineFormInputGroup").val();
+		let newTodo = $("#inputtodo").val();
+		let newPomo = $("#inlineFormInputGroup").val();
 		/*var listItem = template({
             text: newTodo,
             pomodoro: newPomo
