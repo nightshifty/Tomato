@@ -1,0 +1,259 @@
+/* primary color: #A4161A darkred
+secondary color: #E5383B red
+background: #C4C4C4 grey
+other grey: #B1A7A6
+font: #ffffff
+
+*/
+
+h1 {
+  color: #ffffff;
+  background-color: #a4161a;
+  margin-bottom: 5%;
+  width: 100%;
+  text-align: center;
+}
+
+/* Body background and font */
+body {
+  background: #c4c4c4;
+  overflow: hidden;
+  align-items: center;
+}
+
+/* Countdown timer */
+.timer {
+  width: 20rem;
+  height: 20rem;
+  background-color: #e5383b;
+  border: 15px solid #b1a7a6;
+  border-radius: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+
+  box-shadow: 4px 4px 4px #000000;
+}
+
+/*source: w3school window curtain*/
+
+.overlay {
+  height: 0%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: #c4c4c4;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+  color: #ffffff;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  font-size: x-large;
+  color: #a4161a;
+  font-weight: bold;
+}
+
+#openbtn {
+  color: #ffffff;
+  background-color: #a4161a;
+  font-weight: bold;
+  margin-bottom: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#openLogin {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/*selbst */
+#todocontainer {
+  overflow: auto;
+  max-height: 25em;
+  height: 15em;
+}
+
+#parentTodo {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  overflow: auto;
+}
+
+#parentTodo #addTodo {
+  text-align: center;
+  align-items: right;
+  background-color: #ffffff;
+  padding: 2%;
+}
+
+.btn {
+  background-color: #a4161a;
+  color: white;
+  font-weight: bold;
+  width: 5em;
+  margin: 2%;
+}
+
+.form-group {
+  font-weight: bold;
+  align-items: right;
+  color: #ffffff;
+}
+
+input {
+  width: 80%;
+  margin: 3%;
+}
+
+.list-group {
+  text-align: left;
+  list-style: none;
+  align-items: right;
+  height: fit-content;
+  max-height: 20em;
+}
+
+.todo-item {
+  text-align: left;
+  list-style: none;
+  align-items: right;
+  height: fit-content;
+  color: #a4161a;
+  background-color: #b1a7a6;
+  box-shadow: 2px 2px 4px #000000;
+  padding: 2%;
+  margin-bottom: 1%;
+  margin-right: 2%;
+  font-weight: bold;
+}
+
+/*dropdown menu w3schools*/
+/* Dropdown Button */
+.dropbtn {
+  background-color: #a4161a;
+  color: white;
+  font-size: large;
+  border: none;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 60%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #e5383b;
+}
+
+#pomodorocontent {
+  align-content: flex-start;
+  overflow: auto;
+  max-height: 30em;
+  height: 25em;
+}
+
+.card {
+  margin: auto;
+  text-align: left;
+  height: fit-content;
+  width: 40%;
+  color: #a4161a;
+  background-color: #b1a7a6;
+  box-shadow: 2px 2px 4px #000000;
+  padding: 2%;
+  margin: auto;
+  margin-top: 10%;
+  font-weight: bold;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .btn {
+    width: 100%;
+    margin: 1%;
+  }
+
+  .todo-item {
+    text-align: center;
+  }
+}
+
+#message small {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+}

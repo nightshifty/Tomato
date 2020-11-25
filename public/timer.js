@@ -38,6 +38,7 @@ function timer(){
         let remainingseconds = Math.round((finishTime-Date.now()) / 1000);
         let remainingminutes = Math.floor(remainingseconds / 60);
         remainingseconds-= remainingminutes*60;
-        $("#timer").text(remainingminutes+":"+remainingseconds);
+        $("#minutes").text(remainingminutes);
+        $("#seconds").text(remainingseconds);
     }
 }

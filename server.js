@@ -35,8 +35,11 @@ const db = new sqlite3.Database('database.db');
 //prepared Queries:
 const getAllUsers = "SELECT ID, NAME, PASSWORD FROM USERS;";
 const getOneUserByName = "SELECT ID, NAME, PASSWORD FROM USERS WHERE NAME = $1;";
-const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);"
-
+const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);";
+const insertToToDos = "INSERT INTO TODOS (CONTENT, POMODOROS, USERID, DONE) VALUES ($1, $2, $3, $4);";
+const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
+const deleteOneTOdo = "DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2;";
+const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -51,7 +54,7 @@ passport.use(new LocalStrategy(
                 if(res == true){
                     //password matches
                     console.log("password comparison successful");
-                    const user = {id: row.ID}
+                    user = {id: row.ID}
                     return done(null, user);
                 }
                 else{
@@ -112,6 +115,12 @@ app.post('/login', function (req, res, next) {
     })(req, res, next);
 });
 
+//logout functionality
+app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
 //handle register
 app.post('/register', function(req, res, next){
 const username = req.body.username;
@@ -139,6 +148,81 @@ userExistQuery.get(username, function(error, row) {
 });
 });
 
+//Delete one todoItem
+// POST method route
+app.post('/deleteOneEntry', function(req, res){
+    if(req.isAuthenticated()){
+        //DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2:
+        console.log("Trying to delete todoitem "+req.body.todoid+" from user "+user.id)
+        const prsmDelete = db.prepare(deleteOneTOdo);
+        prsmDelete.run(req.body.todoid, user.id);
+        prsmDelete.finalize();
+        console.log("deleted");
+        res.status(200).send('OK');
+    }else{
+        res.status(400).send(error);
+    }
+})
+
+// GET method route
+app.get('/', function (req, res) {
+    if(req.isAuthenticated()){
+        console.log("USER IS AUTHENTICATED WHILE REQUESTING");
+       
+    }else{
+        console.log("ISER IS NOT AUTHENTICATED WHILE REQUESTING"); 
+
+
+    }
+    res.sendFile(__dirname + '/index.html');
+});
+
+//handle TODO add Entry Requests:
+app.post('/addTodoItem', function (req, res, next) {
+    console.log("Trying to post todo item");
+    if(req.isAuthenticated()){
+        console.log("posting is authenticated");
+        const todoContent = req.body.text;
+        const pomodoroAmount = req.body.pomodoro;
+        const prsmInsertToDoEntry = db.prepare(insertToToDos);
+        //values: CONTENT, POMODOROS, USERID, DONE(0 means no)
+        prsmInsertToDoEntry.run(todoContent, pomodoroAmount, user.id, 0);
+        prsmInsertToDoEntry.finalize;
+        console.log("entry should be added");
+        res.status(200).send('OK');
+    }
+});
+
+//create JSON with TODOS
+app.get('/getTodoEntrys', function(req, res, next){
+    console.log("Asked for ToDo list JSON");
+    if(req.isAuthenticated()){
+        console.log("generating JSON now...");
+        const prsmGetTodos = db.prepare(getAllToDosOfOneUser);
+        prsmGetTodos.all(user.id, function(error, rows) {
+            if(error) {
+                console.log(error);
+                res.status(400).json(error);
+            }else{
+                console.log("JSON sent");
+                res.status(200).json(rows);
+            }
+        });
+    }
+})
+
+//find out if user is authenticated
+app.get('/auth', function (req, res) {
+    console.log("Responding auth /auth request");
+    if(req.isAuthenticated()){
+       res.status(201).send('authenticated');
+    }else{
+        res.status(403).send('unauthorized');
+    }
+});
+
+
+//print user table to make testing easier :)
 db.all(getAllUsers, (err, rows) => {
     if (err) {
         return console.error(err.message);
@@ -148,16 +232,6 @@ db.all(getAllUsers, (err, rows) => {
             console.log(row.ID+" | "+row.NAME+" |"+row.PASSWORD);
           });
     }
-});
-
-// GET method route
-app.get('/', function (req, res) {
-    if(req.isAuthenticated()){
-        console.log("USER IS AUTHENTICATED WHILE REQUESTING");
-    }else{
-        console.log("ISER IS NOT AUTHENTICATED WHILE REQUESTING"); 
-    }
-    res.sendFile(__dirname + '/timer.html');
 });
 
 
