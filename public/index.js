@@ -25,6 +25,16 @@ function getToDolist(){
 	})
 }
 
+
+function openTodolist() {
+  document.getElementById("todos").style.height = "100%";
+}
+
+function closeTodolist() {
+  document.getElementById("todos").style.height = "0%";
+}
+
+
 function refreshToDolist(){
 	let newList = $("<ul class='list-group'></ul>");
 	console.log("request list");

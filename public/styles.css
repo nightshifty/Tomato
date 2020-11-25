@@ -9,15 +9,6 @@ New Color Palette */
   background: #E94E77 #D68189 #C6E5D9 #F4EAD5;
 }
 
-h1 {
-  color: #ffffff;
-  background-color: #D68189;
-  margin-bottom: 5%;
-  width: 100%;
-  text-align: center;
-}
-
-/* Body */
 body {
   background: #fff;
   overflow: hidden;
@@ -34,7 +25,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
   text-align: center;
 
   box-shadow: 4px 4px 4px #000000;
@@ -49,18 +39,14 @@ body {
   z-index: 1;
   bottom: 0;
   left: 0;
-  background-color: #F4EAD5;
   overflow-x: hidden;
   transition: 0.5s;
+  background: #F4EAD5;
 }
 
 .overlay-content {
   position: relative;
   top: 10%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-  color: #ffffff;
 }
 
 .overlay .closebtn {
@@ -68,13 +54,10 @@ body {
   top: 5%;
   right: 10%;
   font-size: x-large;
-  color: #D68189;
   font-weight: bold;
 }
 
 #openbtn {
-  color: #ffffff;
-  background-color: #D68189;
   font-weight: bold;
   margin-bottom: 0;
   position: absolute;
@@ -104,27 +87,22 @@ body {
 #parentTodo #addTodo {
   text-align: center;
   align-items: right;
-  background-color: #ffffff;
-  padding: 2%;
+    padding: 2%;
 }
 
-.btn {
-  background-color: #D68189;
-  color: white;
+/* .btn {
   font-weight: bold;
   width: 5em;
   margin: 2%;
-}
+} */
 
 .form-group {
   font-weight: bold;
   align-items: right;
-  color: #ffffff;
 }
 
 input {
-  width: 80%;
-  margin: 3%;
+  margin: 1% auto;
 }
 
 .list-group {
@@ -136,23 +114,20 @@ input {
 }
 
 .todo-item {
-  text-align: left;
+  /* text-align: left;
   list-style: none;
   align-items: right;
   height: fit-content;
-  color: #D68189;
-  background-color: #b1a7a6;
   box-shadow: 2px 2px 4px #000000;
   padding: 2%;
   margin-bottom: 1%;
   margin-right: 2%;
-  font-weight: bold;
+  font-weight: bold; */
 }
 
 /*dropdown menu w3schools*/
 /* Dropdown Button */
 .dropbtn {
-  background-color: #D68189;
   color: white;
   font-size: large;
   border: none;
@@ -170,7 +145,6 @@ input {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #ffffff;
   min-width: 60%;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -178,7 +152,6 @@ input {
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -206,19 +179,17 @@ input {
   height: 25em;
 }
 
-.card {
+/* .card {
   margin: auto;
   text-align: left;
   height: fit-content;
   width: 40%;
-  color: #D68189;
-  background-color: #b1a7a6;
   box-shadow: 2px 2px 4px #000000;
   padding: 2%;
   margin: auto;
   margin-top: 10%;
   font-weight: bold;
-}
+} */
 
 #message p {
   padding: 10px 35px;
@@ -226,10 +197,10 @@ input {
 }
 
 @media screen and (max-width: 600px) {
-  .btn {
+  /* .btn {
     width: 100%;
     margin: 1%;
-  }
+  } */
 
   .todo-item {
     text-align: center;
