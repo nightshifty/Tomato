@@ -16,132 +16,96 @@
 
 <div class="text-center">
       <h1>TomatoTimer</h1>
-        </div>
-        
-        <div class="container dropdown">
-          <button class="btn dropbtn">&#9776;</button>
-          <div class="dropdown-content">
-            <a href="Register">Register</a>
-            <a href="Login">Login</a>
-            
-          </div>
-        </div>
-
-  
-   
-        <div id="pomodorocontent">
-    <!-- Main Timer -->
-    <div  class="container timer">
-        <div id="timer" class="row">
-          <div class="col-3">
-            <h2 id="minutes">25</h2>
-          </div>
-          <div class="col-6">
-            <h4>:</h4>
-          </div>
-          <div class="col-3">
-            <h2 id="seconds">00</h2>
-          </div>
-        </div>
+</div>
+<div class="container dropdown">
+  <button class="btn dropbtn">&#9776;</button>
+  <div class="dropdown-content">
+    <a href="Register">Register</a>
+    <a href="Login">Login</a>
+  </div>
+</div>
+<div id="pomodorocontent">
+  <!-- Main Timer -->
+  <div  class="container timer">
+    <div id="timer" class="row">
+      <div class="col-3">
+        <h2 id="minutes">25</h2>
       </div>
+      <div class="col-6">
+        <h4>:</h4>
+      </div>
+      <div class="col-3">
+        <h2 id="seconds">00</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <Button id="playbtn" class="btn">START</Button>
+        <Button id="pausebtn" class="btn">PAUSE</Button>
+      </div>
+    </div>
+  </div> 
+  <!--Container to show todos, add todos etc. :-->
+  <div id="todos" class="overlay">
+    <a  href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
+    <div class="overlay-content">
       <div class="container">
         <div class="row">
-          <div class="col-sm-12 text-center">
-          <Button id="playbtn" class="btn">START</Button>
-          <Button id="pausebtn" class="btn">PAUSE</Button>
-        </div>
-
-        </div>
-      </div> 
-   
-    
-
-    <!--Container to show todos, add todos, search todos etc. -->
-    <div id="todos" class="overlay">
-      <a  href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
-      <div class="overlay-content">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <h1>Todos</h1>
-              <p>Here you can find your todos and the number of pomodoros</p>
-            </div>
+          <div class="col-sm-12">
+            <h1>Todos</h1>
+            <p>Here you can find your todos and the number of pomodoros</p>
           </div>
-  
-            <div id="todocontainer" class="row" >
-              <div  class="col-sm-12">
-                <ul class="list-group">
-         
-                </ul>
-              </div>
-            </div>
-            <div class="row">
+        </div>
+        <div id="todocontainer" class="row" >
+          <div  class="col-sm-12" id="todoListParent">
+            <ul class="list-group">
+              <!--this is the todo list, it is being replaced and/or elements added to it using AJAX-->
+            </ul>
+          </div>
+        </div>
+        <div class="row">
           <div id="parentTodo" class="col-sm-12">
-
-              <form id="addTodo" class="needs-validation" novalidate>
-
-              <div class="form-row align-items-center">
-                <div class="col-sm-6">
-                  <label class="sr-only" for="inputTodo">Todo</label>
-                  <input type="text" class="form-control" id="inputtodo" placeholder="Todo" required>
+            <form id="addTodo" class="needs-validation" novalidate>
+            <div class="form-row align-items-center">
+              <div class="col-sm-6">
+                <label class="sr-only" for="inputTodo">Todo</label>
+                <input type="text" class="form-control" id="inputtodo" placeholder="Todo" required>
                  <div class="valid-feedback">
-        Perfect!
-      </div>
-      <div class="invalid-feedback">
-        Please fill in a Todo!
-      </div>
+                Perfect!
                 </div>
-                <div class="col-sm-3">
-                  <label class="sr-only" for="inlineFormInput">Pomodoro</label>
-                  
-                  
-                    <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" required>
-                    <div class="valid-feedback">
-                      Perfect!
-                    </div>
-                    <div class="invalid-feedback">
-                      Please fill in a Todo!
-                    </div>
+                <div class="invalid-feedback">
+                Please fill in a Todo!
                 </div>
-                
-                <div class="col-sm-3">
-                  <button type="submit" class="btn">Add Todo</button>
+              </div>
+              <div class="col-sm-3">
+                <label class="sr-only" for="inlineFormInput">Pomodoro</label>
+                <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" required>
+                <div class="valid-feedback">
+                  Perfect!
                 </div>
+                <div class="invalid-feedback">
+                  Please fill in a Todo!
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <button type="submit" class="btn">Add Todo</button>
+              </div>
                 <small id="passwordHelpBlock" class="form-text text-muted">
-                  Add a Todo and the number of Pomodoros you will need here. 
+                Add a Todo and the number of Pomodoros you will need here. 
                 </small>
               </div>
-              
             </form>
-
-            </div>
-            
-            
-
-
-
-
-
-
-
-              
-
-            </div>
           </div>
         </div>
-  
-
-
-
       </div>
-    
     </div>
-    <div id="todobtn" class="footer">
-      
-          <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
-        
-    </div>
+  </div>
+</div>
+<div id="todobtn" class="footer">
+  <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
+</div>
 
 
 
@@ -165,31 +129,22 @@ function closeTodolist() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
 <script id="todolist" type="text/x-handlebars-template">
-  
   <li class="todo-item">
-      
         <div class="row" data-todoid="{{todoid}}">
-
           <div class="col-sm-2 col-xs-6">
             <span>{{pomodoro}}</span> 
-            
           </div>
           <div class="col-sm-6 col-xs-6">
             <span>{{text}}</span>
           </div>
           <div class="col-sm-2">
             <button class="btn " onclick="deleteButtonfunction(this)">Delete</button>
-           
           </div>
           <div class="col-sm-2">
             <button class=" btn btn-block ">Edit</button> 
-            
           </div>
-            
         </div>
-        
     </li>
-  
 </script>
 
 <!--validation: source bootstrap.com --> 
