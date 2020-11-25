@@ -3,33 +3,154 @@
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
     <title>REGISTER</title>
 </head>
 
 <body>
-    <div class='container login-container'>
+    <div class="align-items-center">
 
-        <div class='container'>
-            <form id='mainForm' method="POST" action="/register">
-                <div class='col-8'>
-
-                    <div class='form-group'>
-                        <label for="username">Username</label>
-                        <input id='username' name='username' type="text" class="form-control col-4">
+        <div id="logincard" class='container card '>
+            <h2>Register</h2>
+            <form id='registerForm' method="POST" action="/register" class="needs-validation" name="registration">
+                <div class="form-row align-items-center">
+                <div class="col-sm-12">
+                    <label class="sr-only" for="inputUsername">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                  
+                  </div>
+                </div>
+                <div class="form-row align-items-center">
+                  <div class="col-sm-12">
+                    <label class="sr-only" for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                  
+                  </div>
+                </div>
+                <div class="form-row align-items-center">
+                    <div class="col-sm-12">
+                      <label class="sr-only" for="inputConfirmPassword">Confirm Password</label>
+                      <input type="password" class="form-control" id="confpassword" placeholder="Confirm Password" required>
+                      <div id="message">
+                        <small id="letter" class="invalid">
+                            Must contain lowercase letter.
+                          </small></br>
+                          <small id="capital" class="invalid">
+                            Must contain capital letter.
+                          </small></br>
+                          <small id="number" class="invalid">
+                            Must include a number.
+                          </small></br>
+                          <small id="length" class="invalid">
+                            Must be min 6 characters long.
+                          </small></br>
+                          <small id="confirm" class="invalid">
+                            Passwords do not match.
+                          </small></br>
+                        </div>
+                        
+                     
                     </div>
-
-                    <div class='form-group'>
-                        <label for="password">Password</label>
-                        <input id='password' name='password' type="password" class="form-control col-4">
-                    </div>
-
-                    <button id='btnSubmit' type='submit' class='btn btn-primary'>Submit</button>
+                  </div>
+                  <div class="form-row align-items-center">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn">Register</button>
+                  </div>
+                </div>
+            
+            </form>
+                </div>
 
                 </div>
-            </form>
+            
+        </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!--VALIDATION OF INPUTS: source w3schools-->
+        <script>
+        
+            let password = document.getElementById("password");
+            let confpassword = document.getElementById("confpassword")
+            let letter = document.getElementById("letter");
+            let capital = document.getElementById("capital");
+            let number = document.getElementById("number");
+            let length = document.getElementById("length");
+            let confirm = 
+
+            document.getElementById("message").style.display = "none";
+            
+
+            password.onfocus = function() {
+            document.getElementById("message").style.display = "block";
+            }
+            
+            document.getElementById("message").style.display = "none";
+
+password.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(password.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+}
+
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(password.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(password.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Validate length
+  if(password.value.length >= 6) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+
+  
+
+ 
+}
+
+//validate confirm 
+$('#password, #confpassword').on('keyup', function () {
+  if ($('#password').val() == $('#confpassword').val()) {
+    $('#confirm').html('Password matching').css('color', 'green');
+
+  } else 
+    $('#confirm').html('Password not Matching').css('color', 'red');
+});
+
+
+
+
+</script>
+        
+        
+        
 </body>
 
 </html>
+
+
