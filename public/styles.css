@@ -10,7 +10,7 @@ New Color Palette */
 }
 
 body {
-  background: #fff;
+  background: #547980;
   overflow: hidden;
   align-items: center;
 }
@@ -19,15 +19,16 @@ body {
 .timer {
   width: 20rem;
   height: 20rem;
-  background-color: #e5383b;
-  border: 15px solid #b1a7a6;
+  background: #9DE0AD;
+  border: 15px solid #E5FCC2;
   border-radius: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 1% auto;
 
-  box-shadow: 4px 4px 4px #000000;
+  /*box-shadow: 4px 4px 4px #000000;*/
 }
 
 /*source: w3school window curtain*/
@@ -41,7 +42,7 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  background: #F4EAD5;
+  background: #E5FCC2;
 }
 
 .overlay-content {
@@ -58,11 +59,12 @@ body {
 }
 
 #openbtn {
-  font-weight: bold;
   margin-bottom: 0;
   position: absolute;
   right: 0;
   bottom: 0;
+  width: 100%;
+  border-radius: 0;
 }
 
 #openLogin {
@@ -175,8 +177,9 @@ input {
 #pomodorocontent {
   align-content: flex-start;
   overflow: auto;
-  max-height: 30em;
+  /*max-height: 30em;*/
   height: 25em;
+  margin-top: 3%;
 }
 
 /* .card {

@@ -120,8 +120,8 @@ $(function() {
 		setTimeout(() => { refreshToDolist(); }, 100);//gives the server some time
 
 		//clear inputs 
+		newTodo = $("#inlineFormInputGroup").val(" ");
 		newPomo = $("#inputtodo").val(" ");
-		newTodo = $("#inlineFormInputGroup").val(" ")
     });
 });
 

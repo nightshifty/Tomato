@@ -17,19 +17,6 @@
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Tomato</a>
 
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu" aria-labelledby="dropdown01">
-        <a class="dropdown-item" href="/Register">Register</a>
-        <a class="dropdown-item" href="/Login">Login</a>
-        <a class="dropdown-item" href="/Settings">Settings</a>
-        <form class="form-inline">
-          <input class="form-control" type="text" placeholder="Username" aria-label="Username">
-        </form>
-      </div>
-    </div>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,19 +24,34 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Login" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Login</a>
+          <div class="dropdown-menu" aria-labelledby="Login">
+            <form id='mainForm' method="POST" action="/login" name="LoginForm">
+              <div class="container">
+                <div class="col-12">
+                  <label class="sr-only" for="username">Username</label>
+                  <input id='username' name='username' type="text" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="col-12">
+                  <label class="sr-only" for="password">Password</label>
+                  <input id='password' name='password' type="password" class="form-control" placeholder="Password"
+                    required>
+                </div>
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-dark col-12">Login</button>
+                </div>
+              </div>
+            </form>
+            <a class="dropdown-item" href="/Register">Register</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown02">
-            <a class="dropdown-item" href="/Register">Register</a>
-            <a class="dropdown-item" href="/Login">Login</a>
-            <a class="dropdown-item" href="/Settings">Settings</a>
-            <form class="form-inline">
-              <input class="form-control" type="text" placeholder="Username" aria-label="Username">
-            </form>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Settings</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown-settings">
+            <a class="dropdown-item" href="/Register">Advanced Settings</a>
           </div>
         </li>
       </ul>
@@ -74,8 +76,8 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <Button id="playbtn" class="btn btn-primary">START</Button>
-          <Button id="pausebtn" class="btn btn-primary">PAUSE</Button>
+          <Button id="playbtn" class="btn btn-dark">START</Button>
+          <Button id="pausebtn" class="btn btn-dark">PAUSE</Button>
         </div>
       </div>
     </div>
@@ -111,7 +113,7 @@
 
                   </div>
                   <div class="col-sm-3">
-                    <button type="submit" class="btn btn-primary">Add Todo</button>
+                    <button type="submit" class="btn btn-dark col-sm-6">Add Todo</button>
                   </div>
                   <small id="passwordHelpBlock" class="form-text text-muted">
                     Add a Todo and the number of Pomodoros you will need here.
@@ -125,7 +127,7 @@
     </div>
   </div>
   <div id="todobtn" class="footer">
-    <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()">
+    <button id="openbtn" class="btn btn-dark btn-lg" onclick="openTodolist()">
       Todos</button>
   </div>
 
