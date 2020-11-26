@@ -11,7 +11,7 @@ function togglePlayBtn(){
     "use strict";
     if(playBTn.text() === "START") {
         startTimer();
-        playBTn.text("STOP");
+        playBTn.text("RESET");
     }
     else {
         stopTimer();
