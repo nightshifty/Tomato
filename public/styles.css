@@ -10,7 +10,7 @@ New Color Palette */
 }
 
 body {
-  background: #547980;
+  background: #003049;
   overflow: hidden;
   align-items: center;
 }
@@ -19,8 +19,8 @@ body {
 .timer {
   width: 20rem;
   height: 20rem;
-  background: #9de0ad;
-  border: 15px solid #e5fcc2;
+  background: #d62828;
+  border: 15px solid #f77f00;
   border-radius: 10rem;
   display: flex;
   justify-content: center;
@@ -42,7 +42,8 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  background: #e5fcc2;
+  background: #003049;
+  color: white;
 }
 
 .overlay-content {
@@ -165,7 +166,7 @@ input {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: white;
 }
 
 /* Show the dropdown menu on hover */
@@ -175,7 +176,7 @@ input {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #e5383b;
+  background-color: #003049;
 }
 
 #pomodorocontent {
@@ -246,22 +247,42 @@ input {
   width: 60%;
 }
 
-/*primary button
-.btn-reg {
-  font-weight: bold;
-  width: 5em;
-  margin: 2%;
-  background-color: #547980;
-}
+/*timer animation*/
 
-.btn-reg :link {
-  background-color: #547980;
+#svg circle {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+  stroke: #f77f00;
+  stroke-width: 1em;
+  color: white;
 }
-
-.btn-reg :hover {
-  background-color: #9de0ad;
+#svg #bar {
+  stroke: #d62828;
 }
-
-.btn-reg :visited {
-  background-color: #547980;
-} */
+#cont {
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 2em auto;
+  box-shadow: 0 0 1em black;
+  border-radius: 100%;
+  position: relative;
+}
+#cont:after {
+  position: absolute;
+  display: block;
+  height: 160px;
+  width: 160px;
+  left: 50%;
+  top: 50%;
+  box-shadow: inset 0 0 1em black;
+  content: attr(data-pct) "%";
+  margin-top: -80px;
+  margin-left: -80px;
+  border-radius: 100%;
+  line-height: 160px;
+  font-size: 2em;
+  text-shadow: 0 0 0.5em black;
+  color: white;
+  text-align: center;
+}
