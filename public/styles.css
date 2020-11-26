@@ -115,8 +115,12 @@ input {
   max-height: 20em;
 }
 
-.todo-item {
-  /* text-align: left;
+.todoEntry:hover{
+  border: solid;
+}
+
+/*.todo-item {
+   text-align: left;
   list-style: none;
   align-items: right;
   height: fit-content;
@@ -124,8 +128,8 @@ input {
   padding: 2%;
   margin-bottom: 1%;
   margin-right: 2%;
-  font-weight: bold; */
-}
+  font-weight: bold; 
+}*/
 
 /*dropdown menu w3schools*/
 /* Dropdown Button */

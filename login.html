@@ -2,16 +2,22 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles.css" />
     <title>LOGIN</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Tomato</a>
+  </nav>
+
+
     <div class=' card container'>
 
         <div class='container'>
             <h2>Login</h2>
+            <div class="alert alert-dark" role="alert">
+              <strong>Login failed!</strong> Check your credentials or <a href="register">register now</a>.
+            </div>
             <form id='mainForm' method="POST" action="/login" name="LoginForm">
                 <div class="form-row align-items-center">
                     <div class="col-sm-12">
@@ -29,7 +35,7 @@
                 
                       <div class="form-row align-items-center">
                         <div class="col-sm-12">
-                          <button type="submit" class="btn">Login</button>
+                          <button type="submit" class="btn btn-dark col-12">Login</button>
                         </div>
                       </div>
                 </div>
@@ -37,6 +43,8 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="styles.css" />
 </body>
 
 </html>
