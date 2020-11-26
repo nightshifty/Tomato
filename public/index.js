@@ -1,11 +1,20 @@
-//This document contains all scripts for the todo list
-
-
 
 
 /**source: https://github.com/shoaibcode/Learnig-JQuery-with-AJAX/tree/Lesson-01-Adding-TodoList */
 let $addTodo = $("#addTodo"); //form for adding
 let $TodoItem = $(".list-group"); //<ul> cointaining ToDo list
+let workingOnTaskID="";
+let workingOnTaskTitle="";
+
+//clickable ToDos:
+function clickedTodoEntry(cardDiv){
+	let cardDivElement = $(cardDiv);
+	console.log("clicked ToDo entry");
+	workingOnTaskID = cardDivElement.data("todoid");
+	workingOnTaskTitle = cardDivElement.data("todotext");
+	$("#todoText").text("working on: "+workingOnTaskTitle);
+	$("#openbtn").text("working on: "+workingOnTaskTitle);
+}
 
 //Template
 let source = $("#todolist").html(); //handlebars script
@@ -88,12 +97,11 @@ $( document ).ready(function() {
 			//user is not authorized
 			console.log("user is not authorized");
 			$("#todobtn").hide();
+			$("#logoutBtn").hide();
 			//document.getElementById("todos").style.display = "none";
 		}else{
-			//user is authorized @ Larissa: Call your function with Ajax Magic from here
+			$("#loginArea").hide();
 			console.log("user is authorized");
-			$("#todos").show();
-			console.log("200");
 		}
 	console.log(jqXHR.status); //TODO is undefined if not 403 – WHY?
 });
@@ -136,4 +144,5 @@ function deleteButtonfunction(btn){
 	});
 	dbtn.parent().parent().parent().remove();
 }
+
 

@@ -89,6 +89,7 @@ app.listen(port, function () {
 app.get('/login', function(req, res) {
     res.sendFile(__dirname + "/login.html");
 });
+
 //For testing of register:
 app.get('/register', function(req, res) {
     res.sendFile(__dirname + "/register.html");
