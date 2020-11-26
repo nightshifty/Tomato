@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Tomato Timer</title>
   <meta charset="utf-8">
@@ -8,138 +9,153 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
-  
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-<h1>TomatoTimer</h1>
-<div class="container dropdown">
-  <button class="btn dropbtn">&#9776;</button>
-  <div class="dropdown-content">
-    <a href="Register">Register</a>
-    <a href="Login">Login</a>
-  </div>
-</div>
-<div id="pomodorocontent">
-  <!-- Main Timer -->
-  <div  class="container timer">
-    <div id="timer" class="row">
-      <div class="col-3">
-        <h2 id="minutes">25</h2>
-      </div>
-      <div class="col-6">
-        <h4>:</h4>
-      </div>
-      <div class="col-3">
-        <h2 id="seconds">00</h2>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <Button id="playbtn" class="btn">START</Button>
-        <Button id="pausebtn" class="btn">PAUSE</Button>
-      </div>
-    </div>
-  </div> 
-  <!--Container to show todos, add todos etc. :-->
-  <div id="todos" class="overlay">
-    <a  href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
-    <div class="overlay-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <h1>Todos</h1>
-            <p>Here you can find your todos and the number of pomodoros</p>
-          </div>
-        </div>
-        <div id="todocontainer" class="row" >
-          <div  class="col-sm-12" id="todoListParent">
-            <ul class="list-group">
-              <!--this is the todo list, it is being replaced and/or elements added to it using AJAX-->
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div id="parentTodo" class="col-sm-12">
-            <form id="addTodo" class="needs-validation">
-            <div class="form-row align-items-center">
-              <div class="col-sm-6">
-                <label class="sr-only" for="inputTodo">Todo</label>
-                <input type="text" class="form-control" id="inputtodo" placeholder="Todo" required>
-                 
-              </div>
-              <div class="col-sm-3">
-                <label class="sr-only" for="inlineFormInput">Pomodoro</label>
-                <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" required>
-                
-              </div>
-              <div class="col-sm-3">
-                <button type="submit" class="btn">Add Todo</button>
-              </div>
-                <small id="passwordHelpBlock" class="form-text text-muted">
-                Add a Todo and the number of Pomodoros you will need here. 
-                </small>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Tomato</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Login" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Login</a>
+          <div class="dropdown-menu" aria-labelledby="Login">
+            <form id='mainForm' method="POST" action="/login" name="LoginForm">
+              <div class="container">
+                <div class="col-12">
+                  <label class="sr-only" for="username">Username</label>
+                  <input id='username' name='username' type="text" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="col-12">
+                  <label class="sr-only" for="password">Password</label>
+                  <input id='password' name='password' type="password" class="form-control" placeholder="Password"
+                    required>
+                </div>
+                <div class="col-sm-12">
+                  <button type="submit" class="btn btn-dark col-12">Login</button>
+                </div>
               </div>
             </form>
+            <a class="dropdown-item" href="/Register">Register</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Settings</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown-settings">
+            <a class="dropdown-item" href="/Register">Advanced Settings</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="pomodorocontent">
+    <!-- Main Timer -->
+    <div class="container timer">
+      <div id="timer" class="row">
+        <div class="col-3">
+          <h2 id="minutes">25</h2>
+        </div>
+        <div class="col-6">
+          <h4>:</h4>
+        </div>
+        <div class="col-3">
+          <h2 id="seconds">00</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <Button id="playbtn" class="btn btn-dark">START</Button>
+          <Button id="pausebtn" class="btn btn-dark">PAUSE</Button>
+        </div>
+      </div>
+    </div>
+    <!--Container to show todos, add todos etc. :-->
+    <div id="todos" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
+      <div class="overlay-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>Todos</h1>
+              <p>Here you can find your todos and the number of pomodoros</p>
+            </div>
+          </div>
+          <div id="todocontainer" class="row">
+            <div class="col-sm-12" id="todoListParent">
+              <ul class="list-group">
+                <!--this is the todo list, it is being replaced and/or elements added to it using AJAX-->
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div id="parentTodo" class="col-sm-12">
+              <form id="addTodo" class="needs-validation">
+                <div class="form-row align-items-center">
+                  <div class="col-sm-6">
+                    <label class="sr-only" for="inputTodo">Todo</label>
+                    <input type="text" class="form-control" id="inputtodo" placeholder="Todo" required>
+                  </div>
+                  <div class="col-sm-3">
+                    <label class="sr-only" for="inlineFormInput">Pomodoro</label>
+                    <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Number" required>
+
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="submit" class="btn btn-dark col-sm-6">Add Todo</button>
+                  </div>
+                  <small id="passwordHelpBlock" class="form-text text-muted">
+                    Add a Todo and the number of Pomodoros you will need here.
+                  </small>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div id="todobtn" class="footer">
-  <button id="openbtn" class="btn-block" style="font-size:30px;cursor:pointer" onclick="openTodolist()"> Todos</button>
-</div>
+  <div id="todobtn" class="footer">
+    <button id="openbtn" class="btn btn-dark btn-lg" onclick="openTodolist()">
+      Todos</button>
+  </div>
 
 
+  <!-- source: https://github.com/shoaibcode/Learnig-JQuery-with-AJAX/tree/Lesson-01-Adding-TodoList -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
-
-
-    
-
-   <script>
-    
-function openTodolist() {
-  document.getElementById("todos").style.height = "100%";
-}
-
-function closeTodolist() {
-  document.getElementById("todos").style.height = "0%";
-}
-
-    </script>
-<!-- source: https://github.com/shoaibcode/Learnig-JQuery-with-AJAX/tree/Lesson-01-Adding-TodoList -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-
-<script id="todolist" type="text/x-handlebars-template">
-  <li class="todo-item">
-        <div class="row" data-todoid="{{todoid}}">
-          <div class="col-sm-2 col-xs-6">
-            <span>{{pomodoro}}</span> 
-          </div>
-          <div class="col-sm-6 col-xs-6">
-            <span>{{text}}</span>
-          </div>
-          <div class="col-sm-2">
-            <button class="btn " onclick="deleteButtonfunction(this)">Delete</button>
-          </div>
-          <div class="col-sm-2">
-            <button class=" btn btn-block ">Edit</button> 
-          </div>
+  <!-- TODO muss raus -->
+  <script id="todolist" type="text/x-handlebars-template">
+    <li class="card todo-item">
+      <div class="row no-gutters align-items-center" data-todoid="{{todoid}}">
+        <div class="col-1">
+          <span>{{pomodoro}}</span> 
         </div>
+        <div class="col-10">
+          <span>{{text}}</span>
+        </div>
+        <div class="col-1">
+          <button class="btn " onclick="deleteButtonfunction(this)">×</button>
+        </div>
+      </div>
     </li>
-</script>
+  </script>
 
-<!--validation: source bootstrap.com --> 
-
-
-
-<script src="index.js"></script>
-<script src="timer.js"></script>
+  <script src="index.js"></script>
+  <script src="timer.js"></script>
 
 </body>
+
 </html>
