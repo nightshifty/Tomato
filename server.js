@@ -212,15 +212,12 @@ app.get('/', function (req, res) {
 
 //handle TODO add Entry Requests:
 app.post('/addTodoItem', [
-    
     // Check Todo text
-    body('text').notEmpty().withMessage('Text can not be empty'),
-    
+    body('text').trim().notEmpty().withMessage('Text can not be empty'),
     // check pomodoronumber
     body('pomodoro').trim()
     .optional({ checkFalsy: true })
     .isNumeric().withMessage('Only Decimals allowed')
-   
 ], 
    function (req, res) {
     const errors = validationResult(req);
