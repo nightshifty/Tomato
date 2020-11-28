@@ -48,6 +48,7 @@ function timer(){
     }else{
         remainingseconds = 0;
         remainingTimePerCent = 0;
+        updateProgressBar(0)
         stopTimer();
     }
 }
