@@ -257,6 +257,8 @@ app.get('/getTodoEntrys', function(req, res, next){
                 res.status(200).json(rows);
             }
         });
+    }else{
+        res.status(400).send();
     }
 })
 
