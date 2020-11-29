@@ -6,7 +6,7 @@ font: #ffffff
 
 New Color Palette */
 .colors {
-  background: #E94E77 #D68189 #C6E5D9 #F4EAD5;
+  background: #e94e77 #d68189 #c6e5d9 #f4ead5;
 }
 
 body {
@@ -19,8 +19,8 @@ body {
 .timer {
   width: 20rem;
   height: 20rem;
-  background: #9DE0AD;
-  border: 15px solid #E5FCC2;
+  background: #9de0ad;
+  border: 15px solid #e5fcc2;
   border-radius: 10rem;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  background: #E5FCC2;
+  background: #e5fcc2;
 }
 
 .overlay-content {
@@ -89,7 +89,7 @@ body {
 #parentTodo #addTodo {
   text-align: center;
   align-items: right;
-    padding: 2%;
+  padding: 2%;
 }
 
 /* .btn {
@@ -115,7 +115,7 @@ input {
   max-height: 20em;
 }
 
-.todoEntry:hover{
+.todoEntry:hover {
   border: solid;
 }
 
