@@ -154,6 +154,7 @@ userExistQuery.get(username, function(error, row) {
         prsmInsert.finalize();
         });
     console.log("success.")
+    res.redirect('/');
     res.send("registration complete");
     }else{
     //If code ends up here => The user exists already:
@@ -256,6 +257,8 @@ app.get('/getTodoEntrys', function(req, res, next){
                 res.status(200).json(rows);
             }
         });
+    }else{
+        res.status(400).send();
     }
 })
 

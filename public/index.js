@@ -83,6 +83,7 @@ function refreshToDolist(){
 }
 
 $( document ).ready(function() {
+	$('#timer').attr('data-timetext', pomodoroTime+" : 00");
 	getToDolist();
 	
 	//todolist with scrollview
@@ -144,5 +145,4 @@ function deleteButtonfunction(btn){
 	});
 	dbtn.parent().parent().parent().remove();
 }
-
 
