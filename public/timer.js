@@ -1,20 +1,23 @@
 let playBTn = $("#playbtn");
 let finishTime;
-let pomodoroTime = document.getElementById("pomTime").value;
+let pomodoroTime = 25;
 let timerRunning;
 let remainingminutes;
 let remainingseconds;
 let remainingTimePerCent;
+let audio = document.getElementById("audio"); 
 
 //get pomotime 
 function getPomTime(){
     pomodoroTime = document.getElementById("pomTime").value;
+    $('#timer').attr('data-timetext', pomodoroTime + " : 00");
 }
 
 
 
 playBTn.click(function(){
     togglePlayBtn();
+    
 });
 
 function togglePlayBtn(){
@@ -22,6 +25,7 @@ function togglePlayBtn(){
     if(playBTn.text() === "START") {
         startTimer();
         playBTn.text("RESET");
+        
     }
     else {
         stopTimer();
@@ -52,12 +56,19 @@ function timer(){
         $("#seconds").text(remainingseconds);
         remainingTimePerCent = (remainingminutes*60+remainingseconds)/((pomodoroTime*60)/100)
         updateProgressBar(remainingTimePerCent);
+       
     }else{
         remainingseconds = 0;
         remainingTimePerCent = 0;
         updateProgressBar(0)
         stopTimer();
+        //maybe wrong place??
+        audio.play();
+        
     }
+
+    
+
 }
 
 function updateProgressBar(percentage){
