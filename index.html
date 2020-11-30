@@ -57,10 +57,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Settings</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown-settings">
-            <a class="dropdown-item" href="/Register">Advanced Settings</a>
-          
-          </div>
+            <div class="dropdown-menu" aria-labelledby="dropdown-settings">
+              <a class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile Settings</a>
+              <a class="dropdown-item"  data-toggle="modal" data-target="#timerModal">Timer Settings</a>
+            
+            </div>
         </li>
 
         <li class="nav-item dropdown">
@@ -195,7 +196,91 @@
   </div>
 </div>
 
+<!--Profile Settings -->
+<div class="modal" id="profileModal">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h1 class="modal-title">Profile Settings </h1>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Change Password </h3>
+        <form id='changePWForm' method="POST" action="/login" name="LoginForm">
+          <div class="form-row align-items-center">
+              <div class="col-sm-12">
+                  <div class='form-row align-items-center'>
+                      <label class="sr-only" for="password">Password</label>
+                      <input id='changePw' name='password' type="password" class="form-control" placeholder="Password" required>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <div class='form-row align-items-center'>
+                      <label class="sr-only" for="password">New Password</label>
+                  <input id='changeNewPw' name='newpassword' type="password" class="form-control" placeholder=" New Password" required>
+                  </div>
+                </div>
+          
+                <div class="form-row align-items-center">
+                  <div class="col-sm-12">
+                    <button id="btn_changePw" type="submit" class="btn btn-dark col-12">Change Password</button>
+                  </div>
+                </div>
+          </div>
+      </form>
 
+      </div>
+      <div class="modal-footer">
+        <button id="btn_deleteProfile" type="button" class="btn btn-danger">Delete Profile</button>
+    
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!--Timer Settings -->
+<div class="modal" id="timerModal">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h1 class="modal-title">Timer Settings </h1>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Change Pomodoro Time</h3>
+        <p>Here you have the possibility to change the minutes of your pomodoro time. </p>
+
+
+        <form id='changePWForm' name="LoginForm">
+          <div class="form-row align-items-center">
+              <div class="col-sm-12">
+                  <div class='form-row align-items-center'>
+                      <label class="sr-only" for="pomTime">Pomodoro Time</label>
+                      <input id='pomTime' name='pomTime' type="number" class="form-control" placeholder="Pomodoro Time" value="25">
+                  </div>
+                </div>
+                
+          </div>
+      </form>
+
+      </div>
+      <div class="modal-footer">
+        <button id="btn_changePomTime" type="submit" class="btn btn-dark" onclick="getPomTime();" data-dismiss="modal">Save</button>
+    
+      </div>
+      
+    </div>
+  </div>
+</div>
 
   <div id="pomodorocontent">
     <!-- Main Timer 
@@ -229,6 +314,13 @@
          <!-- <Button id="pausebtn" class="btn btn-dark">PAUSE</Button>-->
         </div>
       </div>
+
+      <audio id="audio">
+        <source src="beep_beep.mp3" type="audio/ogg">
+        <source src="beep_beep.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
     </div>
     <!--Container to show todos, add todos etc. :-->
     <div id="todos" class="overlay bg-dark">
