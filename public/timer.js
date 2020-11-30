@@ -62,13 +62,21 @@ function timer(){
         remainingTimePerCent = 0;
         updateProgressBar(0)
         stopTimer();
-        //maybe wrong place??
         audio.play();
-        
+        trackTime();
     }
 
     
 
+}
+
+function trackTime(){
+    $.post("/trackTime",
+			{
+				time: pomodoroTime,
+				task: workingOnTaskID
+            });
+        refreshToDolist();
 }
 
 function updateProgressBar(percentage){

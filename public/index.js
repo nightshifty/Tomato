@@ -27,6 +27,7 @@ function getToDolist(){
 			let newListItem = template({
 				text: val.CONTENT,
 				pomodoro: val.ESTIMATION,
+				timespent: val.TIMESPENT,
 				todoid: val.TODOID
 			})
 			$TodoItem.append(newListItem);
@@ -66,6 +67,7 @@ function refreshToDolist(){
 		let newListItem = template({
 			text: val.CONTENT,
 			pomodoro: val.ESTIMATION,
+			timespent: val.TIMESPENT,
 			todoid: val.TODOID
 		})
 		console.log("adding to newlist: "+val.CONTENT+" "+val.TODOID);

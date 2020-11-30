@@ -38,10 +38,11 @@ const db = new sqlite3.Database('database.db');
 const getAllUsers = "SELECT ID, NAME, PASSWORD FROM USERS;";
 const getOneUserByName = "SELECT ID, NAME, PASSWORD FROM USERS WHERE NAME = $1;";
 const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);";
-const insertToToDos = "INSERT INTO TODOS (CONTENT, ESTIMATION, USERID, DONE) VALUES ($1, $2, $3, $4);";
-const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, ESTIMATION FROM TODOS WHERE USERID = $1;";
+const insertToToDos = "INSERT INTO TODOS (CONTENT, ESTIMATION, TIMESPENT, USERID, DONE) VALUES ($1, $2, $3, $4, $5);";
+const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, ESTIMATION, TIMESPENT FROM TODOS WHERE USERID = $1;";
 const deleteOneTOdo = "DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2;";
 const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, ESTIMATION FROM TODOS WHERE USERID = $1;";
+const updateTimeSpentOnTodo = "UPDATE TODOS SET TIMESPENT = TIMESPENT + $1 WHERE TODOID = $2 AND USERID = $3;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -234,12 +235,34 @@ app.post('/addTodoItem', [
         const todoContent = req.body.text;
         const pomodoroAmount = req.body.pomodoro;
         const prsmInsertToDoEntry = db.prepare(insertToToDos);
-        //values: CONTENT, POMODOROS, USERID, DONE(0 means no)
-        prsmInsertToDoEntry.run(todoContent, pomodoroAmount, user.id, 0);
+        //values: CONTENT, POMODOROS, TIMESPENT, USERID, DONE(0 means no)
+        prsmInsertToDoEntry.run(todoContent, pomodoroAmount, 0, user.id, 0);
         prsmInsertToDoEntry.finalize;
         console.log("entry should be added");
         res.status(200).send('OK');
     }
+});
+
+//handle track time Requests:
+app.post('/trackTime', 
+//TODO Track in a POMO Entity
+   function (req, res) {
+    if(req.isAuthenticated()){
+        console.log("user tries to track "+req.body.time+" to task "+req.body.task);
+        const time = req.body.time;
+        const task = req.body.task;
+        if(!isNaN(task)){
+            const prsmaddTimetoTodo = db.prepare(updateTimeSpentOnTodo);
+            //UPDATE TODOS SET TIMESPENT = TIMESPENT + $1 WHERE TODOID = $2 AND USERID = $3
+            prsmaddTimetoTodo.run(time, task, user.id);
+            prsmaddTimetoTodo.finalize;
+            console.log("pomodoro should be updated");
+            res.status(200).send('OK');
+        }else{
+            res.status(400).send('denied');
+        }
+    }
+    res.status(400).send('denied');
 });
 
 //create JSON with TODOS
