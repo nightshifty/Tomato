@@ -65,7 +65,7 @@ function refreshToDolist(){
 	$.each (data, function(key, val){
 		let newListItem = template({
 			text: val.CONTENT,
-			pomodoro: val.POMODOROS,
+			pomodoro: val.ESTIMATION,
 			todoid: val.TODOID
 		})
 		console.log("adding to newlist: "+val.CONTENT+" "+val.TODOID);

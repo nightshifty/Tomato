@@ -38,10 +38,10 @@ const db = new sqlite3.Database('database.db');
 const getAllUsers = "SELECT ID, NAME, PASSWORD FROM USERS;";
 const getOneUserByName = "SELECT ID, NAME, PASSWORD FROM USERS WHERE NAME = $1;";
 const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);";
-const insertToToDos = "INSERT INTO TODOS (CONTENT, POMODOROS, USERID, DONE) VALUES ($1, $2, $3, $4);";
-const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
+const insertToToDos = "INSERT INTO TODOS (CONTENT, ESTIMATION, USERID, DONE) VALUES ($1, $2, $3, $4);";
+const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, ESTIMATION FROM TODOS WHERE USERID = $1;";
 const deleteOneTOdo = "DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2;";
-const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, POMODOROS FROM TODOS WHERE USERID = $1;";
+const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, ESTIMATION FROM TODOS WHERE USERID = $1;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -223,7 +223,7 @@ app.post('/addTodoItem', [
 ], 
    function (req, res) {
     const errors = validationResult(req);
-    console.log("usern tries to insert pomodoro: "+req.body.pomodoro);
+    console.log("user tries to insert pomodoro: "+req.body.pomodoro);
     if (!errors.isEmpty()) {
         console.log("forbidden to add to todo because not validated.");
       return res.status(400).json({ errors: errors.array() });
