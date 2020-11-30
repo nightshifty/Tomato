@@ -154,7 +154,7 @@ userExistQuery.get(username, function(error, row) {
         prsmInsert.finalize();
         });
     console.log("success.")
-    res.redirect('/');
+//    res.redirect('/');
     res.send("registration complete");
     }else{
     //If code ends up here => The user exists already:
