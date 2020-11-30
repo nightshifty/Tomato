@@ -26,7 +26,7 @@ function getToDolist(){
 		$.each (data, function(key, val){
 			let newListItem = template({
 				text: val.CONTENT,
-				pomodoro: val.POMODOROS,
+				pomodoro: val.ESTIMATION,
 				todoid: val.TODOID
 			})
 			$TodoItem.append(newListItem);
