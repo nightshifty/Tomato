@@ -1,10 +1,17 @@
 let playBTn = $("#playbtn");
 let finishTime;
-let pomodoroTime = 1;
+let pomodoroTime = document.getElementById("pomTime").value;
 let timerRunning;
 let remainingminutes;
 let remainingseconds;
 let remainingTimePerCent;
+
+//get pomotime 
+function getPomTime(){
+    pomodoroTime = document.getElementById("pomTime").value;
+}
+
+
 
 playBTn.click(function(){
     togglePlayBtn();
