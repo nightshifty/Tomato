@@ -39,6 +39,8 @@ const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, ESTIMATION FROM TODOS W
 const updateTimeSpentOnTodo = "UPDATE TODOS SET TIMESPENT = TIMESPENT + $1 WHERE TODOID = $2 AND USERID = $3;";
 const updatePomoTmeforUser = "UPDATE USERS SET POMOTIME = $1 WHERE ID = $2;";
 const getPomoTime = "SELECT POMOTIME FROM USERS WHERE ID = $1;";
+const getPWHashForUser = "SELECT PASSWORD FROM USERS WHERE ID = $1;";
+const changePWForUser = "UPDATE USERS SET PASSWORD = $1 WHERE ID = $2;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -150,7 +152,7 @@ userExistQuery.get(username, function(error, row) {
         prsmInsert.run(username, hash);
         prsmInsert.finalize();
         });
-    console.log("success.")
+    console.log("success.");
 //    res.redirect('/');
     res.send("registration complete");
     }else{
@@ -160,35 +162,67 @@ userExistQuery.get(username, function(error, row) {
 });
 });
 
-/*function checkUserExists(username){
-    console.log("checking if username exitst: "+username);
-    const userExistQuery = db.prepare(getOneUserByName);
-    userExistQuery.get(username, function(error, row) {
-        if(error) {
-            console.log("there is an error while checking");
-            return false;
-        }
-        if(!row){ //username still free
-            console.log("existing already");
-            return false;
-        }
-        console.log("name still free");
-        return true;
-        })
-}*/
-
 //logout functionality
 app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });
 
+
+//change password functionality
+app.post('/changePW', 
+[
+    //min 8 chars length, TODO contain min 1 char and 1 letter
+    body('newpw').isLength({ min: 8 }).withMessage('password needs min 8 characters')
+    .matches('[0-9]').withMessage('password must contain a number')
+    .matches('[A-Z,a-z]').withMessage('password must contain a letter').trim().escape()
+], 
+    function(req, res){
+        if(req.isAuthenticated())
+        {
+            let oldPW = req.body.oldpw;
+            const newPWPlain = req.body.newpw;
+            //check if old password is correct:
+            const userQuery = db.prepare(getPWHashForUser);
+            userQuery.get(user.id, function(error, row) {
+                if(error) return err;
+                if(!row) return done(null, false, {message: 'User not found!'});
+                //Comparison of passwords if no error + a row exists:
+                bcrypt.compare(oldPW, row.PASSWORD, function(err, resp){
+                    if(err){return done(null, false, {message: err});}
+                    if(resp == true){
+                        //password matches
+                        console.log("password comparison successful, changing password now");
+                        // TODO CHANGE PW HERE!!!
+                        //UPDATE USERS SET PASSWORD = $1 WHERE ID = $2;
+                        const saltRounds = 10;
+                        bcrypt.hash(newPWPlain, saltRounds, function(err, hash){
+                            const prsmUpdatePW = db.prepare(changePWForUser);
+                            prsmUpdatePW.run(hash, user.id)
+                            prsmUpdatePW.finalize();
+                        });
+                        console.log("Password should be updated now");
+                        res.status(200).send("Password was updated.")
+                    }
+                    else{
+                        //password doesn´t match
+                        res.status(400).send("Incorrect old password!");
+                    }
+                });
+            });
+        }
+        else{
+        res.status(400).send("not authorized");
+        }
+    }
+);
+
 //Delete one todoItem
 // POST method route
 app.post('/deleteOneEntry', function(req, res){
     if(req.isAuthenticated()){
         //DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2:
-        console.log("Trying to delete todoitem "+req.body.todoid+" from user "+user.id)
+        console.log("Trying to delete todoitem "+req.body.todoid+" from user "+user.id);
         const prsmDelete = db.prepare(deleteOneTOdo);
         prsmDelete.run(req.body.todoid, user.id);
         prsmDelete.finalize();
@@ -197,7 +231,7 @@ app.post('/deleteOneEntry', function(req, res){
     }else{
         res.status(400).send(error);
     }
-})
+});
 
 // GET method route
 app.get('/', function (req, res) {
@@ -305,7 +339,7 @@ app.get('/getTodoEntrys', function(req, res, next){
     }else{
         res.status(400).send();
     }
-})
+});
 
 //create JSON with POMOTIME
 app.get('/getPomoTime', function(req, res, next){
@@ -326,7 +360,7 @@ app.get('/getPomoTime', function(req, res, next){
     }else{
         res.status(400).send();
     }
-})
+});
 
 //find out if user is authenticated
 app.get('/auth', function (req, res) {

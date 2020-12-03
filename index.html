@@ -210,24 +210,28 @@
       <!-- Modal body -->
       <div class="modal-body">
         <h3>Change Password </h3>
-        <form id='changePWForm' method="POST" action="/login" name="LoginForm">
+        <form id='changePWForm' method="POST" action="/changePW" name="changePWForm">
           <div class="form-row align-items-center">
-              <div class="col-sm-12">
+                  <div class="col-sm-12">
+                    <div class='form-row align-items-center'>
+                      <label class="sr-only" for="oldpw">Old Password</label>
+                      <input id='oldpw' name='oldpw' type="password" class="form-control" placeholder="Old password" required>
+                  </div>
                   <div class='form-row align-items-center'>
-                      <label class="sr-only" for="password">Password</label>
-                      <input id='changePw' name='password' type="password" class="form-control" placeholder="Password" required>
+                      <label class="sr-only" for="newpw">New Password</label>
+                      <input id='newpw' name='newpw' type="password" class="form-control" placeholder="New password" required>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <div class='form-row align-items-center'>
-                      <label class="sr-only" for="password">New Password</label>
-                  <input id='changeNewPw' name='newpassword' type="password" class="form-control" placeholder=" New Password" required>
+                      <label class="sr-only" for="newpw2">New Password again</label>
+                  <input id='newpw2' name='newpw2' type="password" class="form-control" placeholder="repeat new password" required>
                   </div>
                 </div>
           
                 <div class="form-row align-items-center">
                   <div class="col-sm-12">
-                    <button id="btn_changePw" type="submit" class="btn btn-dark col-12">Change Password</button>
+                    <button id="changepwBtn" type="submit" class="btn btn-dark col-12">Change Password</button>
                   </div>
                 </div>
           </div>
@@ -235,7 +239,7 @@
 
       </div>
       <div class="modal-footer">
-        <button id="btn_deleteProfile" type="button" class="btn btn-danger">Delete Profile</button>
+        <button id="deleteProfileBtn" type="button" class="btn btn-danger">Delete Profile</button>
     
       </div>
       
