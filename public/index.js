@@ -85,7 +85,8 @@ function refreshToDolist(){
 }
 
 $( document ).ready(function() {
-	$('#timer').attr('data-timetext', pomodoroTime+" : 00");
+	$('#timer').attr('data-timetext', pomodoroTime+" : 00");//TODO move this line somewhere else
+	getPomoTimeFromDB();
 	getToDolist();
 	
 	//todolist with scrollview
