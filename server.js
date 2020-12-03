@@ -1,7 +1,5 @@
 //requires:
 require('dotenv').config();
-//const user = 'user';
-//const password = 'passw';
 const 
     express = require('express'),
     sqlite3 = require('sqlite3').verbose(),
@@ -11,10 +9,6 @@ const
     LocalStrategy = require('passport-local').Strategy,
     bodyParser = require('body-parser'),
     {body, validationResult} = require('express-validator');
-
-//    auth = require('./auth'),
-//    cookieParser = require('cookie-parser'),
-//    cookieSession = require('cookie-session'),
 
 //declaration & initialisations of required plugins
 const port = parseInt(process.env.PORT); 
@@ -35,14 +29,16 @@ app.use(passport.session());
 //SQLite DB:
 const db = new sqlite3.Database('database.db');
 //prepared Queries:
-const getAllUsers = "SELECT ID, NAME, PASSWORD FROM USERS;";
-const getOneUserByName = "SELECT ID, NAME, PASSWORD FROM USERS WHERE NAME = $1;";
+const getAllUsers = "SELECT ID, NAME, PASSWORD, POMOTIME FROM USERS;";
+const getOneUserByName = "SELECT ID, NAME, PASSWORD, POMOTIME FROM USERS WHERE NAME = $1;";
 const insertToUsers = "INSERT INTO USERS (NAME, PASSWORD) VALUES ($1, $2);";
 const insertToToDos = "INSERT INTO TODOS (CONTENT, ESTIMATION, TIMESPENT, USERID, DONE) VALUES ($1, $2, $3, $4, $5);";
 const getAllToDosOfOneUser = "SELECT TODOID, CONTENT, ESTIMATION, TIMESPENT FROM TODOS WHERE USERID = $1;";
 const deleteOneTOdo = "DELETE FROM TODOS WHERE TODOID = $1 AND USERID = $2;";
 const getLastAddedByUser = "SELECT MAX(TODOID), CONTENT, ESTIMATION FROM TODOS WHERE USERID = $1;";
 const updateTimeSpentOnTodo = "UPDATE TODOS SET TIMESPENT = TIMESPENT + $1 WHERE TODOID = $2 AND USERID = $3;";
+const updatePomoTmeforUser = "UPDATE USERS SET POMOTIME = $1 WHERE ID = $2;";
+const getPomoTime = "SELECT POMOTIME FROM USERS WHERE ID = $1;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -250,8 +246,9 @@ app.post('/trackTime',
     if(req.isAuthenticated()){
         console.log("user tries to track "+req.body.time+" to task "+req.body.task);
         const time = req.body.time;
-        const task = req.body.task;
-        if(!isNaN(task)){
+        const task = parseInt(req.body.task);
+
+        if(!isNaN(task) && task >= 0){//checks if user submitted a valid ID
             const prsmaddTimetoTodo = db.prepare(updateTimeSpentOnTodo);
             //UPDATE TODOS SET TIMESPENT = TIMESPENT + $1 WHERE TODOID = $2 AND USERID = $3
             prsmaddTimetoTodo.run(time, task, user.id);
@@ -259,10 +256,35 @@ app.post('/trackTime',
             console.log("pomodoro should be updated");
             res.status(200).send('OK');
         }else{
+            console.log("not tracking to any task because task was NaN");
             res.status(400).send('denied');
         }
-    }
+    }else{
     res.status(400).send('denied');
+    }
+});
+
+//change PomodoroTime
+app.post('/changePomoTime', 
+   function (req, res) {
+    if(req.isAuthenticated()){
+        console.log("user tries to change pomodoroTime to: "+req.body.newtime);
+        const newtime = parseInt(req.body.newtime);
+
+        if(!isNaN(newtime) && newtime > 0){//checks if user submitted a valid time
+            const prsmchangePomoTime = db.prepare(updatePomoTmeforUser);
+            //UPDATE USERS SET POMOTIME = $1 WHERE USERID = $2;
+            prsmchangePomoTime.run(newtime, user.id);
+            prsmchangePomoTime.finalize;
+            console.log("pomodoroTime should be updated for the user");
+            res.status(200).send('OK');
+        }else{
+            console.log("not updating anything because submitted time was not valid");
+            res.status(400).send('denied');
+        }
+    }else{
+    res.status(400).send('denied');
+    }
 });
 
 //create JSON with TODOS
@@ -272,6 +294,27 @@ app.get('/getTodoEntrys', function(req, res, next){
         console.log("generating JSON now...");
         const prsmGetTodos = db.prepare(getAllToDosOfOneUser);
         prsmGetTodos.all(user.id, function(error, rows) {
+            if(error) {
+                console.log(error);
+                res.status(400).json(error);
+            }else{
+                console.log("JSON sent");
+                res.status(200).json(rows);
+            }
+        });
+    }else{
+        res.status(400).send();
+    }
+})
+
+//create JSON with POMOTIME
+app.get('/getPomoTime', function(req, res, next){
+    console.log("Asked for PomoTime JSON");
+    if(req.isAuthenticated()){
+        console.log("generating JSON now...");
+        //SELECT POMOTIME FROM USERS WHERE ID = $1;"
+        const prsmGetPomoTime = db.prepare(getPomoTime);
+        prsmGetPomoTime.all(user.id, function(error, rows) {
             if(error) {
                 console.log(error);
                 res.status(400).json(error);
@@ -301,9 +344,9 @@ db.all(getAllUsers, (err, rows) => {
     if (err) {
         return console.error(err.message);
     } else {
-        console.log("User table for testing purpose: (ID|NAME|PASSWORD):")
+        console.log("User table for testing purpose: (ID|NAME|PASSWORD|POMOTIME):")
         rows.forEach((row) => {
-            console.log(row.ID+" | "+row.NAME+" |"+row.PASSWORD);
+            console.log(row.ID+" | "+row.NAME+" |"+row.PASSWORD+" |"+row.POMOTIME);
           });
     }
 });

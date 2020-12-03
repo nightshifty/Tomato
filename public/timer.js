@@ -1,16 +1,38 @@
 let playBTn = $("#playbtn");
 let finishTime;
-let pomodoroTime = 25;
+let pomodoroTime = 0.1; //should be 25, is 0.1 for testing only
 let timerRunning;
 let remainingminutes;
 let remainingseconds;
 let remainingTimePerCent;
 let audio = document.getElementById("audio"); 
 
-//get pomotime 
+//function called when clicked on update Pomodoro time, changes Pomodorotime in DB if logged in
 function getPomTime(){
     pomodoroTime = document.getElementById("pomTime").value;
     $('#timer').attr('data-timetext', pomodoroTime + " : 00");
+    //Tries to change the Pomodorotime back in the DB:
+    $.post("/changePomoTime",
+			{
+				newtime: pomodoroTime
+			});
+}
+
+//function called when clicked on update Pomodoro time, changes Pomodorotime in DB if logged in
+function getPomoTimeFromDB(){
+	$.getJSON("/getPomoTime")
+  	.done(function( data ) {
+    console.log("received JSON with PomoTime");
+    $.each( data, function( key, val ) {
+      pomodoroTime = val.POMOTIME;
+      console.log("KEY" + key + " VAL "+val.POMOTIME + " Time from json =" + pomodoroTime);
+      $('#timer').attr('data-timetext', pomodoroTime + " : 00");
+    });
+})
+  .fail(function( jqxhr, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    console.log( "Request Failed: " + err );
+});
 }
 
 
