@@ -102,6 +102,7 @@ $( document ).ready(function() {
 			console.log("user is not authorized");
 			$("#todobtn").hide();
 			$("#logoutBtn").hide();
+			$('#profileSettingsBtn').hide();
 			//document.getElementById("todos").style.display = "none";
 		}else{
 			$("#loginArea").hide();

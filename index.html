@@ -58,7 +58,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Settings</a>
             <div class="dropdown-menu" aria-labelledby="dropdown-settings">
-              <a class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile Settings</a>
+              <a id="profileSettingsBtn" class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile Settings</a>
               <a class="dropdown-item"  data-toggle="modal" data-target="#timerModal">Timer Settings</a>
             
             </div>
@@ -239,8 +239,9 @@
 
       </div>
       <div class="modal-footer">
-        <button id="deleteProfileBtn" type="button" class="btn btn-danger">Delete Profile</button>
-    
+        <form method="POST" action="/deleteMyAccount">
+          <input type="submit" id="deleteProfileBtn" type="button" class="btn btn-danger" value="Delete Profile">
+        </form>
       </div>
       
     </div>

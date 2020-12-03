@@ -41,6 +41,7 @@ const updatePomoTmeforUser = "UPDATE USERS SET POMOTIME = $1 WHERE ID = $2;";
 const getPomoTime = "SELECT POMOTIME FROM USERS WHERE ID = $1;";
 const getPWHashForUser = "SELECT PASSWORD FROM USERS WHERE ID = $1;";
 const changePWForUser = "UPDATE USERS SET PASSWORD = $1 WHERE ID = $2;";
+const deleteOneUser = "DELETE FROM USERS WHERE ID = $1;";
 
 //passport authentication
 passport.use(new LocalStrategy(
@@ -167,6 +168,14 @@ app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
   });
+
+//delete account functionality
+app.post('/deleteMyAccount', function(req, res){
+    const prsmDelUser = db.prepare(deleteOneUser);
+    prsmDelUser.run(user.id);
+    req.logOut();
+    res.send("Your Account has been deleted.");
+})
 
 
 //change password functionality
