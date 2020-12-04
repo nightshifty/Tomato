@@ -7,6 +7,7 @@ let remainingseconds;
 let remainingTimePerCent;
 let audio = document.getElementById("audio"); 
 
+
 //function called when clicked on update Pomodoro time, changes Pomodorotime in DB if logged in
 function getPomTime(){
     pomodoroTime = document.getElementById("pomTime").value;
@@ -65,6 +66,8 @@ function startTimer(){
 function stopTimer(){
     "use strict";
     clearInterval(timerRunning);
+    
+
 }
 
 function timer(){
@@ -84,7 +87,6 @@ function timer(){
         remainingTimePerCent = 0;
         updateProgressBar(0)
         stopTimer();
-        audio.play();
         trackTime();
     }
 

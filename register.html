@@ -16,14 +16,14 @@
                 <div class="form-row align-items-center">
                 <div class="col-sm-12">
                     <label class="sr-only" for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                   
                   </div>
                 </div>
                 <div class="form-row align-items-center">
                   <div class="col-sm-12">
                     <label class="sr-only" for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" >
                   
                   </div>
                 </div>
@@ -67,6 +67,9 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
         <!--VALIDATION OF INPUTS: source w3schools-->
         <script>
@@ -135,14 +138,7 @@ password.onkeyup = function() {
  
 }
 
-//validate confirm 
-$('#password, #confpassword').on('keyup', function () {
-  if ($('#password').val() == $('#confpassword').val()) {
-    $('#confirm').html('Password matching').css('color', 'green');
 
-  } else 
-    $('#confirm').html('Password not Matching').css('color', 'red');
-});
 
 </script>
 
