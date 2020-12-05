@@ -91,6 +91,13 @@ app.get('/login', function(req, res) {
 });
 
 //For testing of login:
+app.get('/wrong-password', function(req, res) {
+    if(req.isAuthenticated())
+        req.logout();
+    res.sendFile(__dirname + "/wrong-pw.html");
+});
+
+//For testing of login:
 app.get('/error', function(req, res) {
     res.sendFile(__dirname + "/error.html");
 });
@@ -230,7 +237,7 @@ app.post('/changePW',
                     }
                     else{
                         //password doesn´t match
-                        res.status(400).send("Incorrect old password!");
+                        res.redirect("/wrong-password");
                     }
                 });
             });
