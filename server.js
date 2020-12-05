@@ -90,6 +90,23 @@ app.get('/login', function(req, res) {
     res.sendFile(__dirname + "/login.html");
 });
 
+//For testing of login:
+app.get('/wrong-password', function(req, res) {
+    if(req.isAuthenticated())
+        req.logout();
+    res.sendFile(__dirname + "/wrong-pw.html");
+});
+
+//For testing of login:
+app.get('/error', function(req, res) {
+    res.sendFile(__dirname + "/error.html");
+});
+
+//For succesful registration:
+app.get('/registered', function(req, res) {
+    res.sendFile(__dirname + "/registered.html");
+});
+
 //For testing of register:
 app.get('/register', function(req, res) {
     res.sendFile(__dirname + "/register.html");
@@ -155,7 +172,7 @@ userExistQuery.get(username, function(error, row) {
         });
     console.log("success.");
 //    res.redirect('/');
-    res.send("registration complete");
+    res.redirect('/registered');
     }else{
     //If code ends up here => The user exists already:
     res.send("The Username exists already!");
@@ -189,6 +206,11 @@ app.post('/changePW',
     function(req, res){
         if(req.isAuthenticated())
         {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                console.log("did not match");
+                res.redirect("/error");
+            }
             let oldPW = req.body.oldpw;
             const newPWPlain = req.body.newpw;
             //check if old password is correct:
@@ -215,7 +237,7 @@ app.post('/changePW',
                     }
                     else{
                         //password doesn´t match
-                        res.status(400).send("Incorrect old password!");
+                        res.redirect("/wrong-password");
                     }
                 });
             });
