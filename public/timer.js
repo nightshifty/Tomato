@@ -45,8 +45,9 @@ playBTn.click(function(){
 function togglePlayBtn(){
     "use strict";
     if(playBTn.text() === "START") {
+        $('#timer').attr('data-timetext',pomodoroTime+" : 00");
         startTimer();
-        playBTn.text("RESET");
+        playBTn.text("STOP");
         
     }
     else {

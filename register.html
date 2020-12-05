@@ -8,148 +8,40 @@
 </head>
 
 <body>
-    <div class="align-items-center">
-
-        <div id="logincard" class='container card '>
+        <div id="logincard" class='container card align-items-center'>
             <h2>Register</h2>
             <form id='registerForm' method="POST" action="/register" class="needs-validation" name="registration">
-                <div class="form-row align-items-center">
-                <div class="col-sm-12">
+                <div class="form-group">
                     <label class="sr-only" for="inputUsername">Username</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                   
-                  </div>
                 </div>
-                <div class="form-row align-items-center">
-                  <div class="col-sm-12">
+                <div class="form-group">
                     <label class="sr-only" for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                  
-                  </div>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" 
+                    pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" 
+                    title="Must contain at least one number and one uppercase and lowercase letter, 
+                    and at least 8 or more characters" required>
+                    <!--We do not check for Capital letters to not be too annoying-->
                 </div>
-                <div class="form-row align-items-center">
-                    <div class="col-sm-12">
+                <div class="form-group">
                       <label class="sr-only" for="inputConfirmPassword">Confirm Password</label>
-                      <input type="password" class="form-control" id="confpassword" placeholder="Confirm Password" required>
-                      <div id="message">
-                        <small id="letter" class="invalid">
-                            Must contain lowercase letter.
-                          </small></br>
-                          <small id="capital" class="invalid">
-                            Must contain capital letter.
-                          </small></br>
-                          <small id="number" class="invalid">
-                            Must include a number.
-                          </small></br>
-                          <small id="length" class="invalid">
-                            Must be min 6 characters long.
-                          </small></br>
-                          <small id="confirm" class="invalid">
-                            Passwords do not match.
-                          </small></br>
-                        </div>
-                        
-                     
-                    </div>
-                  </div>
-                  <div class="form-row align-items-center">
-                  <div class="col-sm-12">
+                      <input type="password" class="form-control" id="confpassword" placeholder="Confirm Password" required
+                      title="Must contain at least one  number and one uppercase and lowercase letter, 
+                      and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" >
+                </div>
+                <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="checkbox" required>
+                      <label class="form-check-label" for="checkbox">I allow you to store and process 
+                        my username, ToDo-entries and Pomodoro usage to provide your service</label>
+                </div>        
                     <button type="submit" class="btn btn-dark">Register</button>
-                  </div>
-                </div>
-            
             </form>
-                </div>
-
-                </div>
-            
-        </div>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="form-validation.js";></script>
 
-        <!--VALIDATION OF INPUTS: source w3schools-->
-        <script>
-        
-            let password = document.getElementById("password");
-            let confpassword = document.getElementById("confpassword")
-            let letter = document.getElementById("letter");
-            let capital = document.getElementById("capital");
-            let number = document.getElementById("number");
-            let length = document.getElementById("length");
-            let confirm = 
-
-            document.getElementById("message").style.display = "none";
-            
-
-            password.onfocus = function() {
-            document.getElementById("message").style.display = "block";
-            }
-            
-
-            
-           
-
-password.onkeyup = function() {
-  // Validate lowercase letters
-  var lowerCaseLetters = /[a-z]/g;
-  if(password.value.match(lowerCaseLetters)) {
-    letter.classList.remove("invalid");
-    letter.classList.add("valid");
-  } else {
-    letter.classList.remove("valid");
-    letter.classList.add("invalid");
-}
-
-  // Validate capital letters
-  var upperCaseLetters = /[A-Z]/g;
-  if(password.value.match(upperCaseLetters)) {
-    capital.classList.remove("invalid");
-    capital.classList.add("valid");
-  } else {
-    capital.classList.remove("valid");
-    capital.classList.add("invalid");
-  }
-
-  // Validate numbers
-  var numbers = /[0-9]/g;
-  if(password.value.match(numbers)) {
-    number.classList.remove("invalid");
-    number.classList.add("valid");
-  } else {
-    number.classList.remove("valid");
-    number.classList.add("invalid");
-  }
-
-  // Validate length
-  if(password.value.length >= 6) {
-    length.classList.remove("invalid");
-    length.classList.add("valid");
-  } else {
-    length.classList.remove("valid");
-    length.classList.add("invalid");
-  }
-
-  
-
- 
-}
-
-//validate confirm 
-$('#password, #confpassword').on('keyup', function () {
-  if ($('#password').val() == $('#confpassword').val()) {
-    $('#confirm').html('Password matching').css('color', 'green');
-
-  } else 
-    $('#confirm').html('Password not Matching').css('color', 'red');
-});
-
-</script>
-
-
-
-        
-        
         
 </body>
 
