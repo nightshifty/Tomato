@@ -8,14 +8,16 @@ let remainingTimePerCent;
 let audio = document.getElementById("audio"); 
 
 //function called when clicked on update Pomodoro time, changes Pomodorotime in DB if logged in
-function getPomTime(){
+function setPomTime(){
     pomodoroTime = document.getElementById("pomTime").value;
-    $('#timer').attr('data-timetext', pomodoroTime + " : 00");
-    //Tries to change the Pomodorotime back in the DB:
-    $.post("/changePomoTime",
-			{
-				newtime: pomodoroTime
-			});
+    if(pomodoroTime>0 && pomodoroTime<99999){
+        $('#timer').attr('data-timetext', pomodoroTime + " : 00");
+        //Tries to change the Pomodorotime back in the DB:
+        $.post("/changePomoTime",
+                {
+                    newtime: pomodoroTime
+                });
+        }
 }
 
 //function called when clicked on update Pomodoro time, changes Pomodorotime in DB if logged in

@@ -274,7 +274,7 @@
               <div class="col-sm-12">
                   <div class='form-row align-items-center'>
                       <label class="sr-only" for="pomTime">Pomodoro Time</label>
-                      <input id='pomTime' name='pomTime' type="number" class="form-control" placeholder="Pomodoro Time" value="25">
+                      <input id='pomTime' name='pomTime' type="number" class="form-control" placeholder="Pomodoro Time" value="25" required pattern="[0-9]" >
                   </div>
                 </div>
                 
@@ -283,7 +283,7 @@
 
       </div>
       <div class="modal-footer">
-        <button id="btn_changePomTime" type="submit" class="btn btn-dark" onclick="getPomTime();" data-dismiss="modal">Save</button>
+        <button id="btn_changePomTime" type="submit" class="btn btn-dark" onclick="setPomTime();" data-dismiss="modal">Save</button>
     
       </div>
       
