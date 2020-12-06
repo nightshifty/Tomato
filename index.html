@@ -44,24 +44,25 @@
                 </div>
               </div>
             </form>
-            
+
             <div class="col-sm-12">
-              <a class="dropdown-item" href="/Register" >No Account? Click here to register. </a>
+              <a class="dropdown-item" href="/Register">No Account? Click here to register. </a>
             </div>
-            
+
           </div>
         </li>
         <li id="logoutBtn">
-        <a class="nav-link" href="logout">Logout</a>
+          <a class="nav-link" href="logout">Logout</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Settings</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown-settings">
-              <a id="profileSettingsBtn" class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile Settings</a>
-              <a class="dropdown-item"  data-toggle="modal" data-target="#timerModal">Timer Settings</a>
-            
-            </div>
+          <div class="dropdown-menu" aria-labelledby="dropdown-settings">
+            <a id="profileSettingsBtn" class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile
+              Settings</a>
+            <a class="dropdown-item" data-toggle="modal" data-target="#timerModal">Timer Settings</a>
+
+          </div>
         </li>
 
         <li class="nav-item dropdown">
@@ -69,222 +70,226 @@
             aria-haspopup="true" aria-expanded="false">Help</a>
           <div class="dropdown-menu" aria-labelledby="dropdown-settings">
             <a class="dropdown-item" data-toggle="modal" data-target="#aboutModal">About PomodoroTimer</a>
-            <a class="dropdown-item"  data-toggle="modal" data-target="#useModal">How to use?</a>
-          
+            <a class="dropdown-item" data-toggle="modal" data-target="#useModal">How to use?</a>
+
           </div>
         </li>
       </ul>
     </div>
   </nav>
 
-<!-- Modal from bootstrap-->
-<div class="modal" id="aboutModal">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-    
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h1 class="modal-title">About </h1>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body">
-        <h3>What is Pomodoro Technique?</h3>
+  <!-- Modal from bootstrap-->
+  <div class="modal" id="aboutModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
 
-        <ol>
-          <li>Pick a task</li>
-          <li>25 minutes timer</li>
-          <li>work until time is up</li>
-          <li>5 min break</li>
-          <li>repeat 4 times than longer break 15-30 minutes</li>
-        </ol>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">About </h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
 
-        <p>We owe the Pomodor technique to a student named Francesco Cirillo from the 1980s. He always found it difficult to concentrate on one piece of work and therefore tried to focus strictly on one piece of work in a 10 minute cycle. To help him, he took a tomato-shaped kitchen clock to better organize his time and thus the Pomodoro technique was born.</p>
-<p>The main points of the Pomodoro technique are briefly summarized. 
-<ul>
-  <li>Get a Timer</li>
-  <li>Get a Todolist</li>
-  <li>Focus on a single task for 25 min</li>
-  <li>tik off one pomodoro</li>
-  <li>5 min break</li>
-  <li>after 4 pomodoros 15 to 30 min break</li>
-</ul>
-</p>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h3>What is Pomodoro Technique?</h3>
 
-<p>The rules of Pomodoro are very simple but effectiv
-<ul>
-  <li>Break down complex projects if it takes more than 4 pomodoros</li>
-  <li>Combine small tasks if it takes less than 4 pomodoros</li>
-  <li>Do not pause the pomodoro for checking mails or texts</li>
-</ul>
+          <ol>
+            <li>Pick a task</li>
+            <li>25 minutes timer</li>
+            <li>work until time is up</li>
+            <li>5 min break</li>
+            <li>repeat 4 times than longer break 15-30 minutes</li>
+          </ol>
 
-</p>
+          <p>We owe the Pomodor technique to a student named Francesco Cirillo from the 1980s. He always found it
+            difficult to concentrate on one piece of work and therefore tried to focus strictly on one piece of work in
+            a 10 minute cycle. To help him, he took a tomato-shaped kitchen clock to better organize his time and thus
+            the Pomodoro technique was born.</p>
+          <p>The main points of the Pomodoro technique are briefly summarized.
+          <ul>
+            <li>Get a Timer</li>
+            <li>Get a Todolist</li>
+            <li>Focus on a single task for 25 min</li>
+            <li>tik off one pomodoro</li>
+            <li>5 min break</li>
+            <li>after 4 pomodoros 15 to 30 min break</li>
+          </ul>
+          </p>
 
-<h3>Why Pomodor Technique?</h3>
+          <p>The rules of Pomodoro are very simple but effectiv
+          <ul>
+            <li>Break down complex projects if it takes more than 4 pomodoros</li>
+            <li>Combine small tasks if it takes less than 4 pomodoros</li>
+            <li>Do not pause the pomodoro for checking mails or texts</li>
+          </ul>
 
-<p>There are a lot of different types of learning but pomodor is effective because of more than one reason
+          </p>
 
-  <ul>
-    <li>Everyone can easily start it</li>
-    <li>You focus on one thing and won't be distracted in this time</li>
-    <li>You know where your time goes</li>
-    <li>It's a game - Every pomodoro is a new goal, new focus and you challenge yourself</li>
-    <li>8-hours workday = 16 pomodoros --> take 2-4 overflow pomodoros</li>
-    <li>define your pomodoro time how you like it</li>
-    <li>Take a break even from screens</li>
-    <li>Use an app or timer to take care of it </li>
-  </ul>
-</p>
+          <h3>Why Pomodor Technique?</h3>
 
+          <p>There are a lot of different types of learning but pomodor is effective because of more than one reason
 
+          <ul>
+            <li>Everyone can easily start it</li>
+            <li>You focus on one thing and won't be distracted in this time</li>
+            <li>You know where your time goes</li>
+            <li>It's a game - Every pomodoro is a new goal, new focus and you challenge yourself</li>
+            <li>8-hours workday = 16 pomodoros --> take 2-4 overflow pomodoros</li>
+            <li>define your pomodoro time how you like it</li>
+            <li>Take a break even from screens</li>
+            <li>Use an app or timer to take care of it </li>
+          </ul>
+          </p>
 
-
-
-
-        <p>Source: https://todoist.com/de/productivity-methods/pomodoro-technique</p>
-
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-<!--Modal for usage-->
-<div class="modal" id="useModal">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-    
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h1 class="modal-title">How to use it? </h1>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body">
-
-        <h3>Welcome</h3>
-       <p> Hi and welcome to the guide through our small but nice Pomodor Technique App. Here you will find the most important hints to use our webapp in a useful and easy way. </p>
-<p>You do not know the Pomodoro App? Then find out what it is under <strong>help --> About Pomodoro.</strong> </p>
-        <h3>For everyone</h3>
-
-<p>On the start page you will immediately see our Pomodor Timer which shows 25 minutes. At the start your Pomodoro time starts and ends after 25 min. This timer is accessible for everyone who visits our website</p>
-        <h3>For registered members</h3>
-
-        <p>If you are a member you can manage your own todolist under todos. Just add your todos with the appropriate number of pomodoros to your list. 
-        </p>
-
-        <h3>This is the perfect order to fully enjoy our app </h3>
-
-        <ol>
-        <li>  Log in or register if you do not have an account yet. </li>
-        <li>Add your Todo to your list. Do not forget to include the estimation of minutes you will need </li>
-        <li>Select the todo you want to work on by clicking it. </li>
-        <li>Start the timer, you can see what task you are working on. </li>
-        <li> pause for 5 minutes and restart the timer </li>
-        </ol>
+          <p>Source: https://todoist.com/de/productivity-methods/pomodoro-technique</p>
 
         </div>
-      
+
+      </div>
     </div>
   </div>
-</div>
 
-<!--Profile Settings -->
-<div class="modal" id="profileModal">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-    
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h1 class="modal-title">Profile Settings </h1>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body">
-        <h3>Change Password </h3>
-        <form id='changePWForm' method="POST" action="/changePW" name="changePWForm">
-          <div class="form-row align-items-center">
-                  <div class="col-sm-12">
-                    <div class='form-row align-items-center'>
-                      <label class="sr-only" for="oldpw">Old Password</label>
-                      <input id='oldpw' name='oldpw' type="password" class="form-control" placeholder="Old password" required>
-                  </div>
-                  <div class='form-row align-items-center'>
-                      <label class="sr-only" for="newpw">New Password</label>
-                      <input id='password' name='newpw' type="password" class="form-control" placeholder="New password"
-                      pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" title="Must contain at least one number 
-                      and one uppercase and lowercase letter, and at least 8 or more characters" required>
-                  </div>
-                </div>
-                <div class="col-sm-12">
-                  <div class='form-row align-items-center'>
-                      <label class="sr-only" for="newpw2">New Password again</label>
-                  <input id='confpassword' name='newpw2' type="password" class="form-control" 
-                  placeholder="repeat new password" pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" 
-                  title="Must contain at least one number and one uppercase and lowercase letter, 
-                  and at least 8 or more characters" required>
-                  </div>
-                </div>
-          
-                <div class="form-row align-items-center">
-                  <div class="col-sm-12">
-                    <button id="changepwBtn" type="submit" class="btn btn-dark col-12">Change Password</button>
-                  </div>
-                </div>
-          </div>
-      </form>
+  <!--Modal for usage-->
+  <div class="modal" id="useModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">How to use it? </h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <h3>Welcome</h3>
+          <p> Hi and welcome to the guide through our small but nice Pomodor Technique App. Here you will find the most
+            important hints to use our webapp in a useful and easy way. </p>
+          <p>You do not know the Pomodoro App? Then find out what it is under <strong>help --> About Pomodoro.</strong>
+          </p>
+          <h3>For everyone</h3>
+
+          <p>On the start page you will immediately see our Pomodor Timer which shows 25 minutes. At the start your
+            Pomodoro time starts and ends after 25 min. This timer is accessible for everyone who visits our website</p>
+          <h3>For registered members</h3>
+
+          <p>If you are a member you can manage your own todolist under todos. Just add your todos with the appropriate
+            number of pomodoros to your list.
+          </p>
+
+          <h3>This is the perfect order to fully enjoy our app </h3>
+
+          <ol>
+            <li> Log in or register if you do not have an account yet. </li>
+            <li>Add your Todo to your list. Do not forget to include the estimation of minutes you will need </li>
+            <li>Select the todo you want to work on by clicking it. </li>
+            <li>Start the timer, you can see what task you are working on. </li>
+            <li> pause for 5 minutes and restart the timer </li>
+          </ol>
+
+        </div>
 
       </div>
-      <div class="modal-footer">
-        <form method="POST" action="/deleteMyAccount">
-          <input type="submit" id="deleteProfileBtn" type="button" class="btn btn-danger" value="Delete Profile">
-        </form>
-      </div>
-      
     </div>
   </div>
-</div>
 
-<!--Timer Settings -->
-<div class="modal" id="timerModal">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-    
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h1 class="modal-title">Timer Settings </h1>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body">
-        <h3>Change Pomodoro Time</h3>
-        <p>Here you have the possibility to change the minutes of your pomodoro time. </p>
+  <!--Profile Settings -->
+  <div class="modal" id="profileModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
 
-        <form id='changePomodoroTime' name="changePomodoroTime">
-          <div class="form-row align-items-center">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Profile Settings </h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h3>Change Password </h3>
+          <form id='changePWForm' method="POST" action="/changePW" name="changePWForm">
+            <div class="form-row align-items-center">
               <div class="col-sm-12">
-                  <div class='form-row align-items-center'>
-                      <label class="sr-only" for="pomTime">Pomodoro Time</label>
-                      <input id='pomTime' name='pomTime' type="number" class="form-control" placeholder="Pomodoro Time" value="25" required pattern="[0-9]" >
-                  </div>
+                <div class='form-row align-items-center'>
+                  <label class="sr-only" for="oldpw">Old Password</label>
+                  <input id='oldpw' name='oldpw' type="password" class="form-control" placeholder="Old password"
+                    required>
                 </div>
-                
-          </div>
-      </form>
+                <div class='form-row align-items-center'>
+                  <label class="sr-only" for="newpw">New Password</label>
+                  <input id='password' name='newpw' type="password" class="form-control" placeholder="New password"
+                    pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" title="Must contain at least one number 
+                      and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class='form-row align-items-center'>
+                  <label class="sr-only" for="newpw2">New Password again</label>
+                  <input id='confpassword' name='newpw2' type="password" class="form-control"
+                    placeholder="repeat new password" pattern="(?=.*\d)(?=.*[a-zA-z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, 
+                  and at least 8 or more characters" required>
+                </div>
+              </div>
+
+              <div class="form-row align-items-center">
+                <div class="col-sm-12">
+                  <button id="changepwBtn" type="submit" class="btn btn-dark col-12">Change Password</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <form method="POST" action="/deleteMyAccount">
+            <input type="submit" id="deleteProfileBtn" type="button" class="btn btn-danger" value="Delete Profile">
+          </form>
+        </div>
 
       </div>
-      <div class="modal-footer">
-        <button id="btn_changePomTime" type="submit" class="btn btn-dark" onclick="setPomTime();" data-dismiss="modal">Save</button>
-    
-      </div>
-      
     </div>
   </div>
-</div>
+
+  <!--Timer Settings -->
+  <div class="modal" id="timerModal">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h1 class="modal-title">Timer Settings </h1>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h3>Change Pomodoro Time</h3>
+          <p>Here you have the possibility to change the minutes of your pomodoro time. </p>
+
+          <form id='changePomodoroTime' name="changePomodoroTime">
+            <div class="form-row align-items-center">
+              <div class="col-sm-12">
+                <div class='form-row align-items-center'>
+                  <label class="sr-only" for="pomTime">Pomodoro Time</label>
+                  <input id='pomTime' name='pomTime' type="number" class="form-control" placeholder="Pomodoro Time"
+                    value="25" required pattern="[0-9]">
+                </div>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button id="btn_changePomTime" type="submit" class="btn btn-dark" onclick="setPomTime();"
+            data-dismiss="modal">Save</button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <div id="pomodorocontent">
     <!-- Main Timer 
@@ -302,20 +307,29 @@
       </div>
     </div> -->
 
-    <div id="timer" data-timetext="">
-      <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
-        <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
-      </svg>
+    <div id="timerbody">
+      <div id="timer">
+        <div class="base-timer">
+          <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g class="base-timer__circle">
+              <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+              <path id="base-timer-path-remaining" stroke-dasharray="283" class="base-timer__path-remaining" d="
+                  M 50, 50
+                  m -45, 0
+                  a 45,45 0 1,0 90,0
+                  a 45,45 0 1,0 -90,0
+              "></path>
+            </g>
+          </svg>
+          <span id="remainingtime" class="base-timer__label">25 : 00</span>
+        </div>
       </div>
-
-
+    </div>
 
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-center">
-          <Button id="playbtn" class="btn btn-dark">START</Button>
-         <!-- <Button id="pausebtn" class="btn btn-dark">PAUSE</Button>-->
+          <button id="playbtn" class="btn btn-dark">START</button>
         </div>
       </div>
 
@@ -378,7 +392,7 @@
 
   <script id="todolist" type="text/x-handlebars-template">
     <li class="card todo-item">
-      <div class="todoEntry row no-gutters align-items-center text-secondary" onclick="clickedTodoEntry(this)" data-todoid="{{todoid}}" data-todotext="{{text}}">
+      <div class="todoEntry row no-gutters align-items-center text-secondary" data-todoid="{{todoid}}" data-todotext="{{text}}">
         <div class="col-1">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
@@ -389,10 +403,10 @@
           <span>{{timespent}}/{{pomodoro}}</span> 
         </div>
         <div class="col-10">
-          <span>{{text}}</span>
+          <a class="todotext" onclick="clickedTodoEntry(this)">{{text}}</a>
         </div>
         <div class="col-1">
-          <button width="20" height="20" class="btn" onclick="deleteButtonfunction(this)">×</button>
+          <button class="btn btn-delete" onclick="deleteButtonfunction(this)">×</button>
         </div>
       </div>
     </li>
@@ -400,8 +414,8 @@
   <script src="timer.js"></script>
   <script src="index.js"></script>
   <script src="form-validation.js"></script>
- 
-  
+  <script src="progressbar.js"></script>
+
 
 </body>
 

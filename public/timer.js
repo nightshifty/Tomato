@@ -1,6 +1,6 @@
 let playBTn = $("#playbtn");
 let finishTime;
-let pomodoroTime = 0.1; //should be 25, is 0.1 for testing only
+let pomodoroTime = 0.3; //should be 25, is 0.1 for testing only
 let timerRunning;
 let remainingminutes;
 let remainingseconds;
@@ -41,13 +41,12 @@ function getPomoTimeFromDB(){
 
 playBTn.click(function(){
     togglePlayBtn();
-    
 });
 
 function togglePlayBtn(){
     "use strict";
     if(playBTn.text() === "START") {
-        $('#timer').attr('data-timetext',pomodoroTime+" : 00");
+        $("#remainingtime").text = pomodoroTime+" : 00";
         startTimer();
         playBTn.text("STOP");
         
@@ -67,25 +66,28 @@ function startTimer(){
 
 function stopTimer(){
     "use strict";
+    playBTn.text("START");
     clearInterval(timerRunning);
 }
 
 function timer(){
     "use strict";
     console.log("timer started...")
-    if(finishTime>=Date.now()){
+    if(finishTime>=Date.now() || remainingseconds>0){
         remainingseconds = Math.round((finishTime-Date.now()) / 1000);
         remainingminutes = Math.floor(remainingseconds / 60);
         remainingseconds-= remainingminutes*60;
-        $("#minutes").text(remainingminutes);
-        $("#seconds").text(remainingseconds);
-        remainingTimePerCent = (remainingminutes*60+remainingseconds)/((pomodoroTime*60)/100)
-        updateProgressBar(remainingTimePerCent);
+        let sec, min;
+        remainingseconds<10 ? sec = "0"+remainingseconds : sec=remainingseconds;
+        remainingminutes<10 ? min = "0"+remainingminutes : min=remainingminutes;
+        $("#remainingtime").text(min+" : "+sec);
+        remainingTimePerCent = (remainingminutes*60+remainingseconds)/((pomodoroTime*60)/100);
+        setCircleDasharray(remainingTimePerCent);
        
     }else{
         remainingseconds = 0;
         remainingTimePerCent = 0;
-        updateProgressBar(0)
+    //    updateProgressBar(0)
         stopTimer();
         audio.play();
         trackTime();
@@ -104,6 +106,7 @@ function trackTime(){
         refreshToDolist();
 }
 
+/*
 function updateProgressBar(percentage){
     let $circle = $('#svg #bar');
     
@@ -113,7 +116,11 @@ function updateProgressBar(percentage){
     $circle.css({ strokeDashoffset: pct});
     if(remainingseconds<10)
         remainingseconds="0"+remainingseconds;
-    $('#timer').attr('data-timetext',remainingminutes+" : "+remainingseconds);
-
-
+    //$('#timer').attr('data-timetext',remainingminutes+" : "+remainingseconds);
+    $("#base-timer-label").text = remainingminutes+" : "+remainingseconds;
+    setCircleDasharray();
+    setRemainingPathColor(timeLeft);
 }
+*/
+
+

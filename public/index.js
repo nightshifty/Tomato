@@ -8,7 +8,7 @@ let workingOnTaskTitle="";
 
 //clickable ToDos:
 function clickedTodoEntry(cardDiv){
-	let cardDivElement = $(cardDiv);
+	let cardDivElement = $(cardDiv).parent().parent();
 	console.log("clicked ToDo entry");
 	workingOnTaskID = cardDivElement.data("todoid");
 	workingOnTaskTitle = cardDivElement.data("todotext");
