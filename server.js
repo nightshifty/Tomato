@@ -151,13 +151,13 @@ app.post('/register', [
     const errors = validationResult(req);
   if (!errors.isEmpty()) {
       console.log("did not match");
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ error: "Password not allowed. Needs to have a legth of 8+ and at least one number and one letter" });
   }
 //at this point username & password are validated
 const username = req.body.username;
 const plainpw = req.body.password;
 console.log("Trying to insert to db: "+username);
-//check if username exists already (because of UNIQUE Constraint in DB):
+//checking if username exists alroady
 const userExistQuery = db.prepare(getOneUserByName);
 userExistQuery.get(username, function(error, row) {
     if(error) return err;
@@ -172,13 +172,14 @@ userExistQuery.get(username, function(error, row) {
         });
     console.log("success.");
 //    res.redirect('/');
-    res.redirect('/registered');
+    res.status(200).send("user created!")
     }else{
     //If code ends up here => The user exists already:
-    res.send("The Username exists already!");
+    res.status(400).json({ error : "This username exists already!" });
     }
 });
 });
+//##end of registration##
 
 //logout functionality
 app.get('/logout', function(req, res){
