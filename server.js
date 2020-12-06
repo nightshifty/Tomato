@@ -151,7 +151,7 @@ app.post('/register', [
     const errors = validationResult(req);
   if (!errors.isEmpty()) {
       console.log("did not match");
-    return res.status(400).json({ error: "Password not allowed. Needs to have a legth of 8+ and at least one number and one letter" });
+    return res.status(400).json({ error: "Check your inputs. username needs min. 3 chars, password needs a legth of 8+ and at least one number and one letter" });
   }
 //at this point username & password are validated
 const username = req.body.username;

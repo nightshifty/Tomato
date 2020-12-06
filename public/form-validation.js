@@ -1,7 +1,12 @@
-//registration:
+/**
+ * containing validation functions
+ */
 let password = document.getElementById("password"),
   confirm_password = document.getElementById("confpassword");
 
+  /**
+   * compare password and confirmation password
+   */
 function validatePassword(){
   if(password.value != confirm_password.value) {
     confirm_password.setCustomValidity("Passwords Don't Match");
