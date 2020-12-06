@@ -11,7 +11,6 @@ New Color Palette */
 
 body {
   background: #003049;
-  overflow: hidden;
   align-items: center;
 }
 
@@ -76,6 +75,16 @@ body {
   border-radius: 0;
 }
 
+.btn-delete {
+  display: block;
+  width: 100%;
+}
+
+.btn-delete:hover {
+  background: #c6e5d9;
+  border-radius: 0;
+}
+
 #openLogin {
   font-size: 30px;
   cursor: pointer;
@@ -124,9 +133,20 @@ input {
   max-height: 20em;
 }
 
-.todoEntry:hover {
-  border: solid;
+.todotext {
+  display: block;
+  min-height: 28px;
+  padding: 8px;
+  text-decoration: none;
+  color: #003049;
 }
+
+.todotext:hover {
+  background: #c6e5d9;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /*.todo-item {
    text-align: left;
@@ -189,9 +209,8 @@ input {
 
 #pomodorocontent {
   align-content: flex-start;
-  overflow: auto;
   /*max-height: 30em;*/
-  height: 25em;
+  min-height: 10em;
   margin-top: 3%;
 }
 
@@ -206,6 +225,9 @@ input {
   margin-top: 10%;
   font-weight: bold;
 } */
+.card {
+  margin-top: 1px;
+}
 
 #message p {
   padding: 10px 35px;
@@ -255,42 +277,64 @@ input {
   width: 60%;
 }
 
-/*timer animation*/
 
-#svg circle {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s linear;
-  stroke: #d62828;
-  stroke-width: 1em;
-  color:  #d62828;
+/* CSS for progressbar: */
+#timerbody {
+  font-family: sans-serif;
+  display: grid;
+  /* height: 100vh; */
+  place-items: center;
+  margin: 10% 0 2%;
 }
-#svg #bar {
-  stroke: #f7f7f7;
-}
+
 #timer {
-  display: block;
-  height: 200px;
-  width: 200px;
-  margin: 2em auto;
-  box-shadow: 0 0 0 0em black;
-  border-radius: 100%;
+  min-width: 200px;
+  width: 35%;
+  max-width: 33em;
+}
+
+.base-timer {
   position: relative;
+  /* width: 300px;
+height: 300px; */
 }
-#timer:after {
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+  stroke: #e94e77;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  /* stroke-linecap: round; */
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: #c6e5d9;
+  /*color: #e94e77;*/
+}
+
+
+.base-timer__label {
   position: absolute;
-  display: block;
-  height: 160px;
-  width: 160px;
-  left: 50%;
-  top: 50%;
-  box-shadow: inset 0 0 0em black;
-  content: attr(data-timetext);
-  margin-top: -80px;
-  margin-left: -80px;
-  border-radius: 100%;
-  line-height: 160px;
-  font-size: 2em;
-  text-shadow: 0 0 0.5em black;
-  color: #f7f7f7;
-  text-align: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #fff;
 }
+/* End of progressbar */
