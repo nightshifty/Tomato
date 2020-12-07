@@ -4,7 +4,7 @@
 
 let playBTn = $("#playbtn");
 let finishTime;
-let pomodoroTime = 0.3; //only integer > 0(can be set to 0.1 for testing reasons, bugs possible if so)
+let pomodoroTime = 25; //only integer > 0(can be set to 0.1 for testing reasons, bugs possible if so)
 let timerRunning;
 let remainingminutes;
 let remainingseconds;
