@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- This page is loaded after a user tried to change his password but entered a wrong old password
+      it informs the user that his password was wrong and that he was logged out -->
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Wrong password</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Wrong password</title>
 </head>
 
 <body>
-        <div class='container card align-items-center'>
-         The old password you entered was wrong.
-         You were logged out for security reasons.
-           You can <a href="/">return to homescreen</a> now.
-        </div>
-       
+  <nav class="navbar navbar-dark bg-dark">
+    <!-- Bootstrap navbar (reduced version) -->
+    <a class="navbar-brand" href="#">Tomato</a>
+  </nav>
+
+  <div class='container card align-items-center'>
+    <p>The old password you entered was wrong.</p>
+    <p>You were logged out for security reasons.</p>
+    <p>You can <a href="/">return to homescreen</a> now.</p>
+  </div>
+
 </body>
 
 </html>
-
-

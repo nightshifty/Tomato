@@ -1,9 +1,20 @@
+/**
+ * Containig all functions relevant for registration of a new user
+ */
+
+ /**
+  * onclicklistener starting the function for 
+  */
 $("#registerForm").on("submit", function(event) {
     event.preventDefault();
-    createAjaxPostSubscribe();
+    registerNewUser();
 });
 
-function createAjaxPostSubscribe() {
+/**
+ * Tries registers the user with Ajax
+ * Calls Success or Error function
+ */
+function registerNewUser() {
     const data = {
         username: $('#username')[0].value,
         password: $('#password')[0].value,
@@ -18,10 +29,15 @@ function createAjaxPostSubscribe() {
  */
 function processSubscribeResult(rows, status, xhr) {
     $('#logincard').hide();
+    
     let content ="<div class='container card align-items-center'>";
-    content+="You are sucessfully registered. Welcome :)"
-    content +="You can <a href='/'>return and login</a> now. </div>"
+    content+="<div class='alert alert-success' role='alert'>";
+    content+="    <h4 class='alert-heading'>Registered!</h4>";
+    content+="    <p>You are sucessfully registered.</p>";
+    content+="    <p>You can <a href='/'>return and login</a> now.</p>";
+    content+="</div>";
     $("body").append(content);
+
 }
 
 /**

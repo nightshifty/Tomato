@@ -218,7 +218,7 @@ app.post('/changePW',
             const userQuery = db.prepare(getPWHashForUser);
             userQuery.get(user.id, function(error, row) {
                 if(error) return err;
-                if(!row) return done(null, false, {message: 'User not found!'});
+                if(!row) res.redirect("/error");
                 //Comparison of passwords if no error + a row exists:
                 bcrypt.compare(oldPW, row.PASSWORD, function(err, resp){
                     if(err){return done(null, false, {message: err});}
@@ -244,7 +244,7 @@ app.post('/changePW',
             });
         }
         else{
-        res.status(400).send("not authorized");
+            res.redirect("/error");
         }
     }
 );
