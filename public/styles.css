@@ -1,12 +1,6 @@
-/* primary color: #A4161A darkred
-secondary color: #E5383B red
-background: #F4EAD5 grey
-other grey: #B1A7A6
-font: #ffffff
-
-New Color Palette */
+Color Palette */
 .colors {
-  background: #e94e77 #d68189 #c6e5d9 #f4ead5;
+  background: #e94e77 #d68189 #c6e5d9 #f4ead5 #003049;
 }
 
 body {
@@ -14,7 +8,7 @@ body {
   align-items: center;
 }
 
-/* Countdown timer */
+/* Countdown timer 
 .timer {
   width: 20rem;
   height: 20rem;
@@ -27,8 +21,7 @@ body {
   text-align: center;
   margin: 1% auto;
 
-  /*box-shadow: 4px 4px 4px #000000;*/
-}
+}*/
 
 /*source: w3school window curtain*/
 
@@ -81,7 +74,6 @@ body {
   cursor: pointer;
 }
 
-/*selbst */
 #todocontainer {
   overflow: auto;
   max-height: 25em;
@@ -100,12 +92,6 @@ body {
   align-items: right;
   padding: 2%;
 }
-
-/* .btn {
-  font-weight: bold;
-  width: 5em;
-  margin: 2%;
-} */
 
 .form-group {
   font-weight: bold;
@@ -137,19 +123,6 @@ input {
   text-decoration: none;
   cursor: pointer;
 }
-
-
-/*.todo-item {
-   text-align: left;
-  list-style: none;
-  align-items: right;
-  height: fit-content;
-  box-shadow: 2px 2px 4px #000000;
-  padding: 2%;
-  margin-bottom: 1%;
-  margin-right: 2%;
-  font-weight: bold; 
-}*/
 
 /*dropdown menu w3schools*/
 /* Dropdown Button */
@@ -204,23 +177,9 @@ input {
 }
 
 #pomodorocontent {
-  /*align-content: flex-start;*/
-  /*max-height: 30em;*/
   min-height: 10em;
-  /*margin-top: 3%;*/
 }
 
-/* .card {
-  margin: auto;
-  text-align: left;
-  height: fit-content;
-  width: 40%;
-  box-shadow: 2px 2px 4px #000000;
-  padding: 2%;
-  margin: auto;
-  margin-top: 10%;
-  font-weight: bold;
-} */
 .card {
   margin-top: 1px;
 }
@@ -231,11 +190,6 @@ input {
 }
 
 @media screen and (max-width: 600px) {
-  /* .btn {
-    width: 100%;
-    margin: 1%;
-  } */
-
   .todo-item {
     text-align: center;
   }
@@ -289,10 +243,9 @@ input {
   max-width: 33em;
 }
 
+/* Begin of progressbar */
 .base-timer {
   position: relative;
-  /* width: 300px;
-height: 300px; */
 }
 
 .base-timer__svg {
@@ -312,13 +265,11 @@ height: 300px; */
 
 .base-timer__path-remaining {
   stroke-width: 7px;
-  /* stroke-linecap: round; */
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
   fill-rule: nonzero;
   stroke: #c6e5d9;
-  /*color: #e94e77;*/
 }
 
 
