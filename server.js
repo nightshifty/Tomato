@@ -320,7 +320,8 @@ app.get('/', function (req, res) {
 });
 
 /**
- * handles Requsts to add entry to TODO:
+ * handles Requsts to add an entry to TODO list:
+ * validating it and addind to the DB
  */
 app.post('/addTodoItem', [
     // Check Todo text
@@ -351,7 +352,9 @@ app.post('/addTodoItem', [
         }
     });
 
-//handle track time Requests:
+/**
+ * Tracking the time after a pomodoro was finished with a todo task selected
+ */
 app.post('/trackTime',
     //TODO Track in a POMO Entity
     function (req, res) {
@@ -376,7 +379,9 @@ app.post('/trackTime',
         }
     });
 
-//change PomodoroTime
+/**
+ * changes the default PomodoroTime of a user in the database
+ */
 app.post('/changePomoTime',
     function (req, res) {
         if (req.isAuthenticated()) {
@@ -399,7 +404,10 @@ app.post('/changePomoTime',
         }
     });
 
-//create JSON with TODOS
+/**
+ * create the ToDo List (JSON with TODOS)
+ * called using AJAX to refresh the ToDo list
+ */
 app.get('/getTodoEntrys', function (req, res, next) {
     console.log("Asked for ToDo list JSON");
     if (req.isAuthenticated()) {
@@ -419,7 +427,11 @@ app.get('/getTodoEntrys', function (req, res, next) {
     }
 });
 
-//create JSON with POMOTIME
+/**
+ * answers request for default pomotime of an signed in user
+ * creates JSON with POMOTIME
+ * called using AJAX on load of the index page
+ */
 app.get('/getPomoTime', function (req, res, next) {
     console.log("Asked for PomoTime JSON");
     if (req.isAuthenticated()) {
@@ -440,7 +452,10 @@ app.get('/getPomoTime', function (req, res, next) {
     }
 });
 
-//find out if user is authenticated
+/**
+ * funtiality for the frontend to easy find out if user is authenticated
+ * used to show/hide protected content (The Todo list and some settings)
+ */
 app.get('/auth', function (req, res) {
     console.log("Responding auth /auth request");
     if (req.isAuthenticated()) {
@@ -451,7 +466,11 @@ app.get('/auth', function (req, res) {
 });
 
 
-//print user table to make testing easier :)
+/**
+ * This function is only here for debugging reasons
+ * prints user table to make testing easier 
+ * should be removed in a productive system :)
+ */
 db.all(getAllUsers, (err, rows) => {
     if (err) {
         return console.error(err.message);

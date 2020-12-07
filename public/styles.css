@@ -18,13 +18,8 @@ body {
 .timer {
   width: 20rem;
   height: 20rem;
-<<<<<<< HEAD
   background: #9de0ad;
   border: 15px solid #e5fcc2;
-=======
-  background: #d62828;
-  border: 15px solid #f77f00;
->>>>>>> 694a8693e457494944ebb6456754ec54eea8754b
   border-radius: 10rem;
   display: flex;
   justify-content: center;
@@ -46,11 +41,7 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-<<<<<<< HEAD
   background: #e5fcc2;
-=======
-  color: white;
->>>>>>> 694a8693e457494944ebb6456754ec54eea8754b
 }
 
 .overlay-content {
@@ -68,7 +59,7 @@ body {
 
 #openbtn {
   margin-bottom: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
@@ -192,6 +183,11 @@ input {
   display: block;
 }
 
+/* Start/Stop button */
+#playbtn{
+  margin-bottom: 5em;
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
   background-color: white;
@@ -208,10 +204,10 @@ input {
 }
 
 #pomodorocontent {
-  align-content: flex-start;
+  /*align-content: flex-start;*/
   /*max-height: 30em;*/
   min-height: 10em;
-  margin-top: 3%;
+  /*margin-top: 3%;*/
 }
 
 /* .card {
@@ -284,7 +280,7 @@ input {
   display: grid;
   /* height: 100vh; */
   place-items: center;
-  margin: 10% 0 2%;
+  margin: 8% 0 2%;
 }
 
 #timer {
