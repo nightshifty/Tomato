@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Main Page including Pomodoro-timer, ToDo-List, Login, settings and help section -->
 
 <head>
   <title>Tomato Timer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- includes: -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
   <link rel="stylesheet" href="styles.css" />
+  <!-- other JS includes are at end of body for faster page loading -->
 </head>
 
 <body>
-
+  <!-- # begin of header -->
   <nav class="navbar navbar-dark bg-dark">
+    <!-- Bootstrap navbar -->
     <a class="navbar-brand" href="#">Tomato</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
@@ -27,41 +30,43 @@
         <li class="nav-item dropdown" id="loginArea">
           <a class="nav-link dropdown-toggle" href="#" id="Login" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">Login</a>
+            <!-- ### Begin of login area (expanding, only visible if not logged in) -->
           <div class="dropdown-menu" aria-labelledby="Login">
             <form id='mainForm' method="POST" action="/login" name="LoginForm">
               <div class="container">
-                <div class="col-12">
+                <div class="col-sm-5">
                   <label class="sr-only" for="username">Username</label>
                   <input id='username' name='username' type="text" class="form-control" placeholder="Username" required>
                 </div>
-                <div class="col-12">
+                <div class="col-sm-5">
                   <label class="sr-only" for="password">Password</label>
                   <input id='loginpassword' name='password' type="password" class="form-control" placeholder="Password"
                     required>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-2">
                   <button type="submit" class="btn btn-dark col-12">Login</button>
+                </div>
+                <div class="col-sm-12">
+                  <a class="dropdown-item" href="/Register">No Account? Click here to <strong>register</strong>. </a>
                 </div>
               </div>
             </form>
-
-            <div class="col-sm-12">
-              <a class="dropdown-item" href="/Register">No Account? Click here to register. </a>
-            </div>
-
           </div>
+          <!-- End of login area -->
         </li>
         <li id="logoutBtn">
+          <!-- logout button is hidden if not signed in -->
           <a class="nav-link" href="logout">Logout</a>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown-settings" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">Settings</a>
           <div class="dropdown-menu" aria-labelledby="dropdown-settings">
-            <a id="profileSettingsBtn" class="dropdown-item" data-toggle="modal" data-target="#profileModal">Profile
-              Settings</a>
+            <!-- Profile settings only visible if signed in: -->
+            <a id="profileSettingsBtn" class="dropdown-item" data-toggle="modal" 
+            data-target="#profileModal">Profile Settings</a>
             <a class="dropdown-item" data-toggle="modal" data-target="#timerModal">Timer Settings</a>
-
           </div>
         </li>
 
@@ -77,19 +82,18 @@
       </ul>
     </div>
   </nav>
+  <!-- End of navbar, end of visible part of Header -->
 
-  <!-- Modal from bootstrap-->
+  <!-- ## Begin of Explaination Window: About Pomodoro-->
   <div class="modal" id="aboutModal">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
-
-        <!-- Modal Header -->
+        <!-- Modal Header: -->
         <div class="modal-header">
           <h1 class="modal-title">About </h1>
           <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
-
-        <!-- Modal body -->
+        <!-- Modal body: -->
         <div class="modal-body">
           <h3>What is Pomodoro Technique?</h3>
 
@@ -141,15 +145,16 @@
           </ul>
           </p>
 
-          <p>Source: https://todoist.com/de/productivity-methods/pomodoro-technique</p>
+          <p>Source: <a href="https://todoist.com/de/productivity-methods/pomodoro-technique">todoist.com</a></p>
 
         </div>
 
       </div>
     </div>
   </div>
+  <!-- End of Explaination Window: About Pomodoro-->
 
-  <!--Modal for usage-->
+  <!-- ## Begin of Explaination Window: How to use the app-->
   <div class="modal" id="useModal">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
@@ -193,8 +198,9 @@
       </div>
     </div>
   </div>
+  <!-- End of Explaination Window: About Pomodoro-->
 
-  <!--Profile Settings -->
+  <!-- ## Begin of Profile Settings Window (only linked when signed in)-->
   <div class="modal" id="profileModal">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
@@ -217,6 +223,8 @@
                   <input id='oldpw' name='oldpw' type="password" class="form-control" placeholder="Old password"
                     required>
                 </div>
+                <!-- studies showed that password restrictions for special chars or capital letters can lead to more unsecure passwords
+                      so we do not check for that but only for size of 8+, one number and one letter-->
                 <div class='form-row align-items-center'>
                   <label class="sr-only" for="newpw">New Password</label>
                   <input id='password' name='newpw' type="password" class="form-control" placeholder="New password"
@@ -225,6 +233,7 @@
                 </div>
               </div>
               <div class="col-sm-12">
+                <!-- validation if passwords match happens in form-validation.js -->
                 <div class='form-row align-items-center'>
                   <label class="sr-only" for="newpw2">New Password again</label>
                   <input id='confpassword' name='newpw2' type="password" class="form-control"
@@ -242,7 +251,9 @@
           </form>
 
         </div>
-        <div class="modal-footer">
+        <!-- delete account buttons -->
+        <div class="modal-body">
+          You can also delete your account here. Be careful! If you click this button your account is gone forever!
           <form method="POST" action="/deleteMyAccount">
             <input type="submit" id="deleteProfileBtn" type="button" class="btn btn-danger" value="Delete Profile">
           </form>
@@ -251,8 +262,9 @@
       </div>
     </div>
   </div>
+  <!-- End of Profile Settings Window -->
 
-  <!--Timer Settings -->
+  <!-- ## Begin of Timer Settings Window-->
   <div class="modal" id="timerModal">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
@@ -291,23 +303,11 @@
       </div>
     </div>
   </div>
+  <!-- ## End of Settings Window-->
+  <!-- # End of Header -->
 
+  <!-- ##Begin of pagecontent -->
   <div id="pomodorocontent">
-    <!-- Main Timer 
-    <div class="container timer">
-      <div id="timer" class="row">
-        <div class="col-3">
-          <h2 id="minutes">25</h2>
-        </div>
-        <div class="col-6">
-          <h4>:</h4>
-        </div>
-        <div class="col-3">
-          <h2 id="seconds">00</h2>
-        </div>
-      </div>
-    </div> -->
-
     <div id="timerbody">
       <div id="timer">
         <div class="base-timer">
@@ -333,15 +333,10 @@
           <button id="playbtn" class="btn btn-dark">START</button>
         </div>
       </div>
-
-      <audio id="audio">
-        <source src="beep_beep.mp3" type="audio/ogg">
-        <source src="beep_beep.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-
     </div>
-    <!--Container to show todos, add todos etc. :-->
+    <!-- End of always visible page content -->
+
+    <!-- ## Begin of ToDo List Container -->
     <div id="todos" class="overlay bg-dark">
       <a href="javascript:void(0)" class="closebtn" onclick="closeTodolist()">&times;</a>
       <div class="overlay-content">
@@ -349,13 +344,13 @@
           <div class="row">
             <div class="col-sm-12">
               <h1 id="todoText">Todos</h1>
-              <p>Here you can find your todos and the number of pomodoros</p>
+              <p>Here you can find your todos and the tracked time for them. Click on one ToDo to work on it.</p>
             </div>
           </div>
           <div id="todocontainer" class="row">
             <div class="col-sm-12" id="todoListParent">
               <ul class="list-group">
-                <!--this is the todo list, it is being replaced and/or elements added to it using AJAX-->
+                <!--this is the todo list, it is being (re)placed and elements added to it using AJAX-->
               </ul>
             </div>
           </div>
@@ -385,33 +380,57 @@
         </div>
       </div>
     </div>
+    <!-- End of ToDo List container -->
+
   </div>
+  <!-- Button opening ToDo-List overlay with animation: -->
   <div id="todobtn" class="footer">
     <button id="openbtn" class="btn btn-dark btn-lg" onclick="openTodolist()">
       Todos</button>
   </div>
 
+        <!-- Audio file which is played when one pomodoro is finished -->
+        <audio id="audio">
+          <source src="beep_beep.mp3" type="audio/ogg">
+          <source src="beep_beep.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+  
+  <!-- ToDo List item template used to build one ToDo List Item -->
   <script id="todolist" type="text/x-handlebars-template">
-    <li class="card todo-item">
-      <div class="todoEntry row no-gutters align-items-center text-secondary" data-todoid="{{todoid}}" data-todotext="{{text}}">
-        <div class="col-1">
-          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
-            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
-            <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
-          </svg>
+    <!-- This script contains actually only html, so it´s included here in the html file -->
+  <li class="card todo-item">
+    <div class="todoEntry row no-gutters align-items-center text-secondary" data-todoid="{{todoid}}"
+      data-todotext="{{text}}">
+      <div class="col-1">
+        <!-- Bootstraps timer svg: -->
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock-history" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
+          <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
+          <path fill-rule="evenodd"
+            d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+        </svg>
 
-          <span>{{timespent}}/{{pomodoro}}</span> 
-        </div>
-        <div class="col-10">
-          <a class="todotext" onclick="clickedTodoEntry(this)">{{text}}</a>
-        </div>
-        <div class="col-1">
-          <button class="btn btn-delete" onclick="deleteButtonfunction(this)">×</button>
-        </div>
+        <!-- Showing how much time spent / how much estimated [Estimation could be empty]: -->
+        <span>{{timespent}}/{{pomodoro}}</span>
       </div>
-    </li>
+      <div class="col-10">
+        <!-- Showing ToDo Entry text: -->
+        <a class="todotext" onclick="clickedTodoEntry(this)">{{text}}</a>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-delete" onclick="deleteButtonfunction(this)">×</button>
+      </div>
+    </div>
+  </li>
+  
   </script>
+  <!-- End of ToDo-list item template  -->
+
+  <!-- including of scripts: -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
   <script src="index.js"></script>
   <script src="timer.js"></script>
   <script src="form-validation.js"></script>
