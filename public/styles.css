@@ -243,6 +243,10 @@ input {
   max-width: 33em;
 }
 
+.textonblackBG{
+  color: #c6e5d9;
+}
+
 /* Begin of progressbar */
 .base-timer {
   position: relative;
