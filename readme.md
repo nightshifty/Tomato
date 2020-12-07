@@ -47,9 +47,7 @@ Also before opening the page ensure JS is enabled and loading of external script
 
 ## Usage of the app
 Just expand the navigation bar and click on help to find out about the usecase of the app and how to use it.
-Note: We also registered a Testing user you can use: 
-username: tester
-password: iwanttotest1pomodoroapp
+Note: We also registered a Testing user you can use. Its username is tester and its password is iwanttotest1pomodoroapp 
 Or you just create a new user. It only takes 2 seconds.
 Note for testing: We implemented this app with a mobile first approach. It is also working on desktops but the main platform we focused on are mobile phones.
 
