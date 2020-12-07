@@ -1,5 +1,4 @@
-Color Palette */
-.colors {
+Color Palette */ .colors {
   background: #e94e77 #d68189 #c6e5d9 #f4ead5 #003049;
 }
 
@@ -34,7 +33,7 @@ body {
   left: 0;
   overflow-x: hidden;
   transition: 0.5s;
-  background: #e5fcc2;
+  color: #c6e5d9;
 }
 
 .overlay-content {
@@ -48,6 +47,7 @@ body {
   right: 10%;
   font-size: x-large;
   font-weight: bold;
+  color: #c6e5d9;
 }
 
 #openbtn {
@@ -157,7 +157,7 @@ input {
 }
 
 /* Start/Stop button */
-#playbtn{
+#playbtn {
   margin-bottom: 5em;
 }
 
@@ -174,6 +174,10 @@ input {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #003049;
+}
+
+.dropdown-item:hover {
+  background-color: #c6e5d9;
 }
 
 #pomodorocontent {
@@ -227,7 +231,6 @@ input {
   width: 60%;
 }
 
-
 /* CSS for progressbar: */
 #timerbody {
   font-family: sans-serif;
@@ -271,7 +274,6 @@ input {
   fill-rule: nonzero;
   stroke: #c6e5d9;
 }
-
 
 .base-timer__label {
   position: absolute;
