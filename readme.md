@@ -13,6 +13,7 @@ This webapp was developed during the course "Web Development and Deployment" at 
 - pleasant alarm sound to remind you for a break
 - modern design for phone and desktop (phone prioritized)
 - explanation about pomodor technique and how to use the app
+- implements data minimisation principles (only asks for really needed informations)
 
 ### Additional Features as Member
 
@@ -46,23 +47,31 @@ Also before opening the page ensure JS is enabled and loading of external script
 
 ## Usage of the app
 Just expand the navigation bar and click on help to find out about the usecase of the app and how to use it.
+Note: We also registered a Testing user you can use: 
+username: tester
+password: iwanttotest1pomodoroapp
+Or you just create a new user. It only takes 2 seconds.
+Note for testing: We implemented this app with a mobile first approach. It is also working on desktops but the main platform we focused on are mobile phones.
 
 ## Future releases
 The project is fully working and potential finished but we have many features we plan to add in future releases. The database tables are already designed to work with future releass to avoid complicated data migration after updates. That´s why in this release some fields of the Database are not used.
 
 ## Database
 The database (a SQLite DB) is included already. This section is only for further information.
-The Tables included in database.db can also manually be created using sqlite3 commands:
+The tables included in database.db can also manually be created using the following sqlite3 commands.
 
 
 ### Users Table
 Contains all Users which are registered (notice that the password is not stored but only a hash of it)
+
 > CREATE TABLE USERS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT UNIQUE NOT NULL, PASSWORD TEXT NOT NULL, LASTUSED TEXT, PUBLIC INTEGER, POMOTIME INTEGER DEFAULT 25);
 
 ### ToDos Table
 Contains all ToDo list elements
+
 > CREATE TABLE TODOS (TODOID INTEGER PRIMARY KEY AUTOINCREMENT, CONTENT TEXT NOT NULL, CREATEDDATE TEXT, DONE INTEGER, DONETIME TEXT, TIMESPENT INTEGER, ESTIMATION INTEGER, USERID INTEGER NOT NULL ,FOREIGN KEY (USERID) REFERENCES USERS(ID));
 
 ### Pomodoro Table
 Will contain all Pomodoros tracked in future versions for advanced individual statistics about each user.
+
 > CREATE TABLE POMODORO (ID INTEGER PRIMARY KEY AUTOINCREMENT, USERID INTEGER NOT NULL, TODOID INTEGER, BEGIN TEXT, END TEXT, DURATION INT, VOTING INT CONTENT TEXT NOT NULL, FOREIGN KEY (USERID) REFERENCES USERS(ID), FOREIGN KEY (TODOID) REFERENCES TODOS(TODOID));
