@@ -4,7 +4,7 @@
 
 Tomato is a simple Pomodoro webapp that is suitable for everyone. It aims to provide an attractive user interface and an easy way to write and edit tasks using the Pomodoro technique.
 
-This webapp was developed during the course "Web Development and Deployment" at the TU Dublin.
+Feel free to use it in a setup to optimize your working environment
 
 ## Features
 
